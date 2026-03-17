@@ -12,7 +12,11 @@ require base_path("views/partials/nav.php");
         <input type="text" name="password" value="<?= $note['password'] ?>" aria-label="Read-only name" readonly>
     </div>
     <div>
-        
+        <ul>
+            <?php foreach($folders as $folder) : ?>
+                <li><?= $folder['folder_name'] ?></li>
+            <?php endforeach; ?>            
+        </ul>
     </div>
     <div class="buttons">
         <a href="/password/edit?id=<?= $note['id'] ?>">Edit</a>

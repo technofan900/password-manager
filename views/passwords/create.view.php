@@ -20,6 +20,18 @@ require base_path("views/partials/nav.php");
             <input type="password" name="password" id="password" value="<?= htmlspecialchars($_POST['password'] ?? '') ?>">
         </div>
 
+        <div>
+            <label for="folder_select">Folder (Optional)</label>
+            <select name="folder_select" id="folder_select" aria-label="Select" required>
+                <option selected value=" ">None</option>
+                <?php foreach($folders as $folder) : ?>
+                    <option value="<?= $folder['id'] ?>">
+                        <?= htmlspecialchars($folder['folder_name']) ?>
+                    </option>
+                <?php endforeach; ?>
+            </select>
+        </div>
+
         <p>
             <button type="submit">Submit</button>
         </p>

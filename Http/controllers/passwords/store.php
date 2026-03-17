@@ -13,6 +13,11 @@ $errors = [];
 $name = $_POST['name'] ?? '';
 $login_data = $_POST['login_data'] ?? '';
 $password = $_POST['password'] ?? '';
+$folder = $_POST['folder_select'] ?? '';
+
+if ($folder === ' ') {
+    $folder = null; // Convert empty string to NULL
+}
 
 $body_min_ln = 3;
 $body_max_ln = 256;
@@ -29,15 +34,16 @@ if (! empty($errors)) {
         'password' => $password
     ];
 
-    redirect('/passwords');
+    redirect('/passwords/create');
 }
 
-$sql = "INSERT INTO passwords (name, login_data, password, userID) VALUES (:name, :login_data, :password, :userID)";
+$sql = "INSERT INTO passwords (name, login_data, password, userID, folder_id) VALUES (:name, :login_data, :password, :userID, :folder_id)";
 $db->query($sql, [
     'name' => $name,
     'login_data' => $login_data,
     'password' => $password,
-    'userID' => $userID
+    'userID' => $userID,
+    'folder_id' => $folder
 ]);
 
 $_SESSION['success'] = 'Note created.';

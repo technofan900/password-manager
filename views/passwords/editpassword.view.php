@@ -24,11 +24,9 @@ require base_path("views/partials/nav.php");
 
         <p>
             <button type="submit">Submit</button>
+            <a onclick="history.back()">Back</a>
         </p>
 
-        <p>
-            <button onclick="history.back()">Back</button>
-        </p>
     </form>
 </div>
 

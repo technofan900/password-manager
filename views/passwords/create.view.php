@@ -35,6 +35,10 @@ require base_path("views/partials/nav.php");
         <p>
             <button type="submit">Submit</button>
         </p>
+
+        <p>
+            <a href="/passwords" class="back-button">Back</a>
+        </p>
     </form>
 </div>
 

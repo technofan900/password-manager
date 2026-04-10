@@ -122,3 +122,8 @@ details.dropdown ul li {
 .text-sm {
     font-size: 0.875rem;
 }
+
+/* Back / contrast links used as buttons */
+.back-button {
+    font-size: 1.3rem; 
+}

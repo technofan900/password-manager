@@ -7,10 +7,13 @@ require base_path("views/partials/nav.php");
       <form method="POST" action="/login">
         <label>
           Email or username
-          <input name="login" type="text" placeholder="" required>
           <?php if (isset($errors['login'])) : ?>
-            <p class="text-red-400 text-sm"><?= $errors['login'] ?></p>
-          <?php endif; ?>
+            <input name="login" type="text" placeholder="" aria-invalid="true" aria-describedby="login-helper" value="<?= htmlspecialchars($old['login'] ?? '') ?>" required>
+            <small id="login-helper" class="text-red-400 text-sm"><?= $errors['login'] ?></small>
+          <?php else: ?>
+            <input name="login" type="text" placeholder="" value="<?= htmlspecialchars($old['login'] ?? '') ?>" required>
+          <?php endif; ?>          
+
         </label>
 
         <label>
@@ -22,7 +25,6 @@ require base_path("views/partials/nav.php");
             <?php endif; ?>
             <button id="togglePassword" type="button">Show</button>
           </fieldset>
-
         </label>
 
         <button type="submit">Nosūtīt</button>

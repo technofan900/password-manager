@@ -13,6 +13,7 @@ $password = $_POST['password'] ?? '';
 $errors = [];
 
 $_SESSION['old'] = [
+    'username' => $username,
     'email' => $email
 ];
 

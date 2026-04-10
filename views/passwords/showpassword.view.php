@@ -14,7 +14,7 @@ require base_path("views/partials/nav.php");
     <div>
         <ul>
             <?php foreach($folders as $folder) : ?>
-                <li><?= $folder['folder_name'] ?></li>
+                <li><?= $folder['folder_name'] //why this here, change ?></li> 
             <?php endforeach; ?>            
         </ul>
     </div>

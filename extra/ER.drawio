@@ -1,0 +1,180 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36 OPR/127.0.0.0" version="29.6.1">
+  <diagram name="Lapa-1" id="g4rLnOGBWUCRdp-tGlXG">
+    <mxGraphModel dx="590" dy="276" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="1654" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="Lhv-WigPhkgvAZP5kAfQ-10" edge="1" parent="1" source="Lhv-WigPhkgvAZP5kAfQ-1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;endArrow=none;endFill=0;" target="Lhv-WigPhkgvAZP5kAfQ-4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Lhv-WigPhkgvAZP5kAfQ-11" edge="1" parent="1" source="Lhv-WigPhkgvAZP5kAfQ-1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;endArrow=none;endFill=0;" target="Lhv-WigPhkgvAZP5kAfQ-6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Lhv-WigPhkgvAZP5kAfQ-12" edge="1" parent="1" source="Lhv-WigPhkgvAZP5kAfQ-1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;startArrow=none;startFill=0;endArrow=none;endFill=0;" target="Lhv-WigPhkgvAZP5kAfQ-5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Lhv-WigPhkgvAZP5kAfQ-13" edge="1" parent="1" source="Lhv-WigPhkgvAZP5kAfQ-1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;endArrow=none;endFill=0;" target="Lhv-WigPhkgvAZP5kAfQ-7">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Lhv-WigPhkgvAZP5kAfQ-1" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="Lietotājs" vertex="1">
+          <mxGeometry height="40" width="90" x="330" y="390" as="geometry" />
+        </mxCell>
+        <mxCell id="Lhv-WigPhkgvAZP5kAfQ-2" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="Mape" vertex="1">
+          <mxGeometry height="40" width="90" x="410" y="630" as="geometry" />
+        </mxCell>
+        <mxCell id="Lhv-WigPhkgvAZP5kAfQ-3" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="Pieslēgšanas&lt;div&gt;dati&lt;/div&gt;" vertex="1">
+          <mxGeometry height="40" width="90" x="620" y="490" as="geometry" />
+        </mxCell>
+        <mxCell id="Lhv-WigPhkgvAZP5kAfQ-4" parent="1" style="ellipse;whiteSpace=wrap;html=1;" value="Lietotājvārds" vertex="1">
+          <mxGeometry height="50" width="100" x="160" y="280" as="geometry" />
+        </mxCell>
+        <mxCell id="Lhv-WigPhkgvAZP5kAfQ-5" parent="1" style="ellipse;whiteSpace=wrap;html=1;" value="Parole" vertex="1">
+          <mxGeometry height="50" width="100" x="380" y="280" as="geometry" />
+        </mxCell>
+        <mxCell id="Lhv-WigPhkgvAZP5kAfQ-6" parent="1" style="ellipse;whiteSpace=wrap;html=1;" value="ē-pasts" vertex="1">
+          <mxGeometry height="50" width="100" x="270" y="280" as="geometry" />
+        </mxCell>
+        <mxCell id="Lhv-WigPhkgvAZP5kAfQ-7" parent="1" style="ellipse;whiteSpace=wrap;html=1;" value="Izveidošanas datums" vertex="1">
+          <mxGeometry height="50" width="100" x="490" y="280" as="geometry" />
+        </mxCell>
+        <mxCell id="Lhv-WigPhkgvAZP5kAfQ-14" edge="1" parent="1" source="Lhv-WigPhkgvAZP5kAfQ-3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;endArrow=none;endFill=0;" target="Lhv-WigPhkgvAZP5kAfQ-18">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="700" y="510" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Lhv-WigPhkgvAZP5kAfQ-15" edge="1" parent="1" source="Lhv-WigPhkgvAZP5kAfQ-3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;endArrow=none;endFill=0;" target="Lhv-WigPhkgvAZP5kAfQ-20">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="700" y="510" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Lhv-WigPhkgvAZP5kAfQ-16" edge="1" parent="1" source="Lhv-WigPhkgvAZP5kAfQ-3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;startArrow=none;startFill=0;endArrow=none;endFill=0;" target="Lhv-WigPhkgvAZP5kAfQ-19">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="700" y="510" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Lhv-WigPhkgvAZP5kAfQ-17" edge="1" parent="1" source="Lhv-WigPhkgvAZP5kAfQ-3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;endArrow=none;endFill=0;" target="Lhv-WigPhkgvAZP5kAfQ-21">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="700" y="510" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Lhv-WigPhkgvAZP5kAfQ-18" parent="1" style="ellipse;whiteSpace=wrap;html=1;" value="Datu kopas&lt;div&gt;nosaukums&lt;/div&gt;" vertex="1">
+          <mxGeometry height="50" width="100" x="750" y="440" as="geometry" />
+        </mxCell>
+        <mxCell id="Lhv-WigPhkgvAZP5kAfQ-19" parent="1" style="ellipse;whiteSpace=wrap;html=1;" value="Lietotāja&lt;div&gt;identifikators&lt;/div&gt;" vertex="1">
+          <mxGeometry height="50" width="100" x="750" y="530" as="geometry" />
+        </mxCell>
+        <mxCell id="Lhv-WigPhkgvAZP5kAfQ-20" parent="1" style="ellipse;whiteSpace=wrap;html=1;" value="Lietotājs" vertex="1">
+          <mxGeometry height="50" width="100" x="860" y="440" as="geometry" />
+        </mxCell>
+        <mxCell id="Lhv-WigPhkgvAZP5kAfQ-21" parent="1" style="ellipse;whiteSpace=wrap;html=1;" value="Mapes&lt;div&gt;identifikators&lt;/div&gt;" vertex="1">
+          <mxGeometry height="50" width="100" x="860" y="530" as="geometry" />
+        </mxCell>
+        <mxCell id="Lhv-WigPhkgvAZP5kAfQ-23" edge="1" parent="1" source="Lhv-WigPhkgvAZP5kAfQ-2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;endArrow=none;endFill=0;" target="Lhv-WigPhkgvAZP5kAfQ-27">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="480" y="600" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Lhv-WigPhkgvAZP5kAfQ-24" edge="1" parent="1" source="Lhv-WigPhkgvAZP5kAfQ-2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;endArrow=none;endFill=0;" target="Lhv-WigPhkgvAZP5kAfQ-29">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="480" y="600" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Lhv-WigPhkgvAZP5kAfQ-25" edge="1" parent="1" source="Lhv-WigPhkgvAZP5kAfQ-2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;startArrow=none;startFill=0;endArrow=none;endFill=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" target="Lhv-WigPhkgvAZP5kAfQ-28">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="470" y="600" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Lhv-WigPhkgvAZP5kAfQ-26" edge="1" parent="1" source="Lhv-WigPhkgvAZP5kAfQ-2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;endArrow=none;endFill=0;" target="Lhv-WigPhkgvAZP5kAfQ-30">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="480" y="600" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Lhv-WigPhkgvAZP5kAfQ-27" parent="1" style="ellipse;whiteSpace=wrap;html=1;" value="Datu kopas&lt;div&gt;nosaukums&lt;/div&gt;" vertex="1">
+          <mxGeometry height="50" width="100" x="220" y="720" as="geometry" />
+        </mxCell>
+        <mxCell id="Lhv-WigPhkgvAZP5kAfQ-28" parent="1" style="ellipse;whiteSpace=wrap;html=1;" value="Lietotāja&lt;div&gt;identifikators&lt;/div&gt;" vertex="1">
+          <mxGeometry height="50" width="100" x="440" y="720" as="geometry" />
+        </mxCell>
+        <mxCell id="Lhv-WigPhkgvAZP5kAfQ-29" parent="1" style="ellipse;whiteSpace=wrap;html=1;" value="Nosaukums" vertex="1">
+          <mxGeometry height="50" width="100" x="330" y="720" as="geometry" />
+        </mxCell>
+        <mxCell id="Lhv-WigPhkgvAZP5kAfQ-30" parent="1" style="ellipse;whiteSpace=wrap;html=1;" value="Mapes&lt;div&gt;identifikators&lt;/div&gt;" vertex="1">
+          <mxGeometry height="50" width="100" x="550" y="720" as="geometry" />
+        </mxCell>
+        <mxCell id="Lhv-WigPhkgvAZP5kAfQ-32" parent="1" style="shape=rhombus;perimeter=rhombusPerimeter;whiteSpace=wrap;html=1;align=center;" value="Pieder" vertex="1">
+          <mxGeometry height="60" width="120" x="500" y="380" as="geometry" />
+        </mxCell>
+        <mxCell id="Lhv-WigPhkgvAZP5kAfQ-37" parent="1" style="shape=rhombus;perimeter=rhombusPerimeter;whiteSpace=wrap;html=1;align=center;" value="Atrodas" vertex="1">
+          <mxGeometry height="60" width="120" x="605" y="580" as="geometry" />
+        </mxCell>
+        <mxCell id="Lhv-WigPhkgvAZP5kAfQ-40" parent="1" style="shape=rhombus;perimeter=rhombusPerimeter;whiteSpace=wrap;html=1;align=center;" value="Pieder" vertex="1">
+          <mxGeometry height="60" width="120" x="315" y="510" as="geometry" />
+        </mxCell>
+        <mxCell id="Lhv-WigPhkgvAZP5kAfQ-43" edge="1" parent="1" source="Lhv-WigPhkgvAZP5kAfQ-40" style="endArrow=none;html=1;rounded=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;edgeStyle=orthogonalEdgeStyle;" target="Lhv-WigPhkgvAZP5kAfQ-1" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="440" y="570" as="sourcePoint" />
+            <mxPoint x="600" y="570" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Lhv-WigPhkgvAZP5kAfQ-44" connectable="0" parent="Lhv-WigPhkgvAZP5kAfQ-43" style="resizable=0;html=1;whiteSpace=wrap;align=right;verticalAlign=bottom;" value="1" vertex="1">
+          <mxGeometry relative="1" x="1" as="geometry">
+            <mxPoint y="20" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Lhv-WigPhkgvAZP5kAfQ-47" edge="1" parent="1" source="Lhv-WigPhkgvAZP5kAfQ-40" style="endArrow=none;html=1;rounded=0;edgeStyle=orthogonalEdgeStyle;entryX=0;entryY=0.5;entryDx=0;entryDy=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" target="Lhv-WigPhkgvAZP5kAfQ-2" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="400" y="560" as="sourcePoint" />
+            <mxPoint x="560" y="560" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Lhv-WigPhkgvAZP5kAfQ-48" connectable="0" parent="Lhv-WigPhkgvAZP5kAfQ-47" style="resizable=0;html=1;whiteSpace=wrap;align=right;verticalAlign=bottom;" value="N" vertex="1">
+          <mxGeometry relative="1" x="1" as="geometry">
+            <mxPoint x="-6" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Lhv-WigPhkgvAZP5kAfQ-49" edge="1" parent="1" source="Lhv-WigPhkgvAZP5kAfQ-32" style="endArrow=none;html=1;rounded=0;edgeStyle=orthogonalEdgeStyle;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" target="Lhv-WigPhkgvAZP5kAfQ-1" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="400" y="560" as="sourcePoint" />
+            <mxPoint x="560" y="560" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Lhv-WigPhkgvAZP5kAfQ-50" connectable="0" parent="Lhv-WigPhkgvAZP5kAfQ-49" style="resizable=0;html=1;whiteSpace=wrap;align=right;verticalAlign=bottom;" value="1" vertex="1">
+          <mxGeometry relative="1" x="1" as="geometry">
+            <mxPoint x="10" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Lhv-WigPhkgvAZP5kAfQ-51" edge="1" parent="1" source="Lhv-WigPhkgvAZP5kAfQ-32" style="endArrow=none;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;edgeStyle=orthogonalEdgeStyle;" target="Lhv-WigPhkgvAZP5kAfQ-3" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="440" y="460" as="sourcePoint" />
+            <mxPoint x="600" y="460" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Lhv-WigPhkgvAZP5kAfQ-52" connectable="0" parent="Lhv-WigPhkgvAZP5kAfQ-51" style="resizable=0;html=1;whiteSpace=wrap;align=right;verticalAlign=bottom;" value="N" vertex="1">
+          <mxGeometry relative="1" x="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Lhv-WigPhkgvAZP5kAfQ-53" edge="1" parent="1" source="Lhv-WigPhkgvAZP5kAfQ-37" style="endArrow=none;html=1;rounded=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;edgeStyle=orthogonalEdgeStyle;" target="Lhv-WigPhkgvAZP5kAfQ-3" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="440" y="460" as="sourcePoint" />
+            <mxPoint x="600" y="460" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Lhv-WigPhkgvAZP5kAfQ-54" connectable="0" parent="Lhv-WigPhkgvAZP5kAfQ-53" style="resizable=0;html=1;whiteSpace=wrap;align=right;verticalAlign=bottom;" value="0..N" vertex="1">
+          <mxGeometry relative="1" x="1" as="geometry">
+            <mxPoint y="20" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Lhv-WigPhkgvAZP5kAfQ-55" edge="1" parent="1" source="Lhv-WigPhkgvAZP5kAfQ-37" style="endArrow=none;html=1;rounded=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;edgeStyle=orthogonalEdgeStyle;" target="Lhv-WigPhkgvAZP5kAfQ-2" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="510" y="600" as="sourcePoint" />
+            <mxPoint x="670" y="600" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Lhv-WigPhkgvAZP5kAfQ-56" connectable="0" parent="Lhv-WigPhkgvAZP5kAfQ-55" style="resizable=0;html=1;whiteSpace=wrap;align=right;verticalAlign=bottom;" value="1" vertex="1">
+          <mxGeometry relative="1" x="1" as="geometry">
+            <mxPoint x="10" as="offset" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

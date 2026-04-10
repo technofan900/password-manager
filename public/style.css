@@ -112,3 +112,13 @@ details.dropdown ul li {
     margin-left: 0.5rem; /* increase or decrease as needed */
 }
 
+
+/* Utility classes (small subset of Tailwind-like helpers) */
+/* Use only if all else fails*/
+.text-red-400 {
+    color: #fc8f8f; /* red-400 */
+}
+
+.text-sm {
+    font-size: 0.875rem;
+}

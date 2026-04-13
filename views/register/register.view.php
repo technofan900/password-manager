@@ -39,6 +39,9 @@ require base_path ("views/partials/nav.php");
               <button id="togglePassword" type="button">Show</button> 
             </fieldset>
           <?php endif; ?>
+          <small class="text-gray-500 text-sm block mt-1">
+            Password must be at least 12 characters long and include one uppercase letter, one lowercase letter, one number, and one special character.
+          </small>
         </label>
 
         <button type="submit" name="submit">Nosūtīt</button>

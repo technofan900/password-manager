@@ -21,11 +21,15 @@ if (! Validator::email($email)) {
     $errors['email'] = "Please provide a valid email address.";
 }
 
-$passw_min_ln = 4;
-$passw_max_ln = 255;
 
-if (! Validator::string($password, $passw_min_ln, $passw_max_ln)) {
-    $errors['password'] = "Please provide a password at least {$passw_min_ln} characters.";
+
+if (! Validator::string($username, 4, 255)) {
+    $errors['username'] = "Please provide a username between 4 and 255 characters.";
+}
+
+$passwordErrors = Validator::checkPasswordStrength($password);
+if (! empty($passwordErrors)) {
+    $errors['password'] = implode(' ', $passwordErrors);
 }
 
 if (! empty($errors)) {

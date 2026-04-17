@@ -14,6 +14,7 @@ $id   = $_POST['id'] ?? null;
 $name = $_POST['name'] ?? '';
 $login_data = $_POST['login_data'] ?? '';
 $password = $_POST['password'] ?? '';
+$folder_id = array_key_exists('folder_id', $_POST) ? $_POST['folder_id'] : null;
 
 $sql  = "SELECT * FROM passwords WHERE id = :id";
 $note = $db->query($sql, ['id' => $id])->findOrFail();
@@ -38,11 +39,14 @@ if (! empty($errors)) {
     redirect("/password/edit?id={$id}");
 }
 
-$sql = "UPDATE passwords SET name = :name , login_data = :login_data , password = :password where id = :id";
+$folder_id = $folder_id === '' ? null : (int) $folder_id;
+
+$sql = "UPDATE passwords SET name = :name, login_data = :login_data, password = :password, folder_id = :folder_id WHERE id = :id";
 $db->query($sql, [
     'name' => $name,
     'login_data' => $login_data,
     'password' => $password,
+    'folder_id' => $folder_id,
     'id'   => $id
 ]);
 

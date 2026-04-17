@@ -10,9 +10,14 @@ $userId = $_SESSION['user']['id'];
 $sql = "SELECT * FROM passwords WHERE id = :id"; 
 $note = $db->query($sql, ['id' => $_GET['id']])->findOrFail();
 
+// Load folders for the current user so the edit form can show the folder select.
+$foldersql = "SELECT id, user_id, folder_name FROM folders WHERE user_id = :user_id ORDER BY id DESC";
+$folders = $db->query($foldersql, ['user_id' => $userId])->get();
+
 authorize ($note['userID'] == $userId);
 
 view("passwords/editpassword.view.php", [
     'errors' => $_SESSION['errors'] ?? [],
-    'note' => $note
+    'note' => $note,
+    'folders' => $folders
 ]);

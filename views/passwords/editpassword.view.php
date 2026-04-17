@@ -22,6 +22,18 @@ require base_path("views/partials/nav.php");
             <input type="password" name="password" id="password" value="<?= htmlspecialchars($_POST['password'] ?? $note['password']) ?>">
         </div>
 
+        <div class="form-group">
+            <label for="folder_id">Folder</label>
+            <select name="folder_id" id="folder_id">
+                <option value="">None</option>
+                <?php foreach($folders as $folder) : ?>
+                    <option value="<?= htmlspecialchars($folder['id']) ?>" <?= (isset($note['folder_id']) && $note['folder_id'] == $folder['id']) ? 'selected' : '' ?>>
+                        <?= htmlspecialchars($folder['folder_name']) ?>
+                    </option>
+                <?php endforeach; ?>
+            </select>
+        </div>
+
         <p>
             <button type="submit">Submit</button>
             <a onclick="history.back()">Back</a>

@@ -96,6 +96,11 @@ details.dropdown ul li {
     list-style: none;
     padding: 0.15rem 0;
 }
+div ul .folder_name {
+    list-style-type: none; /* Remove bullets */
+    padding: 0; /* Remove padding */
+    margin: 0;
+}
 
 /* Folders design */
 

@@ -12,11 +12,12 @@ require base_path("views/partials/nav.php");
         <input type="text" name="password" value="<?= $note['password'] ?>" aria-label="Read-only name" readonly>
     </div>
     <div>
-        <ul>
-            <?php foreach($folders as $folder) : ?>
-                <li><?= $folder['folder_name'] //why this here, change ?></li> 
-            <?php endforeach; ?>            
-        </ul>
+        <?php foreach($folders as $folder) : ?>
+            <div class="form-group">
+                <label for="folder_name">Folder</label>
+                <input type="text" name="folder_name" id="folder_name" value="<?= htmlspecialchars($folder['folder_name']) ?>" readonly>
+            </div>
+        <?php endforeach; ?>
     </div>
     <div class="buttons">
         <p>

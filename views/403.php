@@ -2,7 +2,7 @@
 require base_path("views/partials/header.php");
 require base_path("views/partials/nav.php");
 ?>
-  <main>
+  <main class="container">
     <section>
       <h1>403 — Piekļuve aizliegta</h1>
       <p>Atvainojiet, pieprasītā lapa netika atrasta.</p>

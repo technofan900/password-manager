@@ -29,6 +29,9 @@ $router->delete('/passwords', 'passwords/destroy.php')->only('auth');
 $router->get("/password", "passwords/show.php")->only('auth');
 $router->get("/password/edit", "passwords/edit.php")->only('auth');
 
+// Secure attachment serving
+$router->get('/attachment', 'attachments/show.php')->only('auth');
+
 // create folders
 $router->get("/folders" , "folders/show.php")->only('auth');
 $router->post("/folder" , 'folders/store.php')->only('auth');

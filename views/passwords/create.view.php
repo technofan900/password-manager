@@ -4,7 +4,7 @@ require base_path("views/partials/nav.php");
 ?>
 <div class="container">
     <h2>Save password</h2>
-    <form method="POST" action="/passwords">
+    <form method="POST" action="/passwords" enctype="multipart/form-data">
         <div class="form-group">
             <label for="name">Name</label>
             <input type="text" name="name" id="name" value="<?= htmlspecialchars($_POST['name'] ?? '') ?>">
@@ -22,7 +22,7 @@ require base_path("views/partials/nav.php");
 
         <div>
             <label for="folder_select">Folder (Optional)</label>
-            <select name="folder_select" id="folder_select" aria-label="Select" required>
+            <select name="folder_select" id="folder_select" aria-label="Select">
                 <option selected value=" ">None</option>
                 <?php foreach($folders as $folder) : ?>
                     <option value="<?= $folder['id'] ?>">
@@ -31,6 +31,30 @@ require base_path("views/partials/nav.php");
                 <?php endforeach; ?>
             </select>
         </div>
+
+        <div class="form-group">
+            <label for="attachment">Attachment (optional) — PDF, TXT, PNG (max 5MB)</label>
+            <input type="hidden" name="MAX_FILE_SIZE" value="5242880">
+            <input type="file" name="attachment" id="attachment" accept=".pdf,.txt,image/png">
+        </div>
+
+        <script>
+            (function(){
+                var form = document.currentScript && document.currentScript.parentNode.querySelector('form') || document.querySelector('form');
+                var fileInput = document.getElementById('attachment');
+                var max = 5242880; // 5MB
+                if (form && fileInput) {
+                    form.addEventListener('submit', function(e){
+                        var f = fileInput.files[0];
+                        if (f && f.size > max) {
+                            e.preventDefault();
+                            alert('Attachment exceeds maximum size of 5MB.');
+                            return false;
+                        }
+                    });
+                }
+            })();
+        </script>
 
         <p>
             <button type="submit">Submit</button>

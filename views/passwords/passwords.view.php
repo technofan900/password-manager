@@ -74,6 +74,25 @@ require base_path("views/partials/nav.php");
                                 echo htmlspecialchars($folderName);
                                 ?>
                             </td>
+                            <td>
+                                <?php if (!empty($note['attachment'])) :
+                                    $attachmentUrl = '/attachment?id=' . urlencode($note['id']);
+                                    // preview inline for image
+                                    $previewUrl = $attachmentUrl . '&inline=1';
+                                    $ext = strtolower(pathinfo($note['attachment'], PATHINFO_EXTENSION));
+                                    if ($ext === 'png') : ?>
+                                        <a href="<?= $attachmentUrl ?>" target="_blank">
+                                            <img src="<?= $previewUrl ?>" alt="attachment" style="max-width:80px;max-height:80px">
+                                        </a>
+                                    <?php elseif ($ext === 'pdf') : ?>
+                                        <a href="<?= $attachmentUrl ?>" target="_blank">Open PDF</a>
+                                    <?php else : ?>
+                                        <a href="<?= $attachmentUrl ?>&download=1">Download</a>
+                                    <?php endif; ?>
+                                <?php else : ?>
+                                    —
+                                <?php endif; ?>
+                            </td>
                         </tr>
                     </tbody>
                     <?php endforeach; ?>

@@ -81,7 +81,8 @@ CREATE TABLE `passwords` (
   `login_data` text NOT NULL,
   `password` varchar(255) NOT NULL,
   `userID` int(11) DEFAULT NULL,
-  `folder_id` int(11) DEFAULT NULL
+  `folder_id` int(11) DEFAULT NULL,
+  `attachment` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -97,6 +98,17 @@ INSERT INTO `passwords` (`id`, `name`, `login_data`, `password`, `userID`, `fold
 (8, 'pass2', '1234rt', '56789o', 7, 1),
 (9, 'pass3', 'qwedf', '12345t', 7, 1),
 (11, 'sazxdsa', 'axszx', 'xasz', 12, 5);
+
+-- Update existing inserts to include attachment = NULL
+INSERT INTO `passwords` (`id`, `name`, `login_data`, `password`, `userID`, `folder_id`, `attachment`) VALUES
+(1, 'test', 'qwerty', '12345', 1, NULL, NULL),
+(2, 'dati', 'qwerty', '123456', 1, NULL, NULL),
+(3, 'weeds', 'qwerty1', '1234567', 1, NULL, NULL),
+(6, 'testds', 'dooods', 'qwerty1', 5, NULL, NULL),
+(7, 'pass1', '1123', '1234', 7, NULL, NULL),
+(8, 'pass2', '1234rt', '56789o', 7, 1, NULL),
+(9, 'pass3', 'qwedf', '12345t', 7, 1, NULL),
+(11, 'sazxdsa', 'axszx', 'xasz', 12, 5, NULL);
 
 --
 -- Indexes for dumped tables

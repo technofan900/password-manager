@@ -11,6 +11,36 @@ require base_path("views/partials/nav.php");
         <label for="password">Password</label>
         <input type="text" name="password" value="<?= $note['password'] ?>" aria-label="Read-only name" readonly>
     </div>
+    <div class="attachment">
+        <?php if (!empty($note['attachment'])):
+            $attachmentUrl = '/attachment?id=' . urlencode($note['id']);
+            $previewUrl = $attachmentUrl . '&inline=1';
+            $basename = basename($note['attachment']);
+            $storagePath = base_path('storage/uploads/' . $basename);
+            $ext = strtolower(pathinfo($basename, PATHINFO_EXTENSION));
+        ?>
+            <label for="">Attachment</label>
+            <?php if ($ext === 'png') : ?>
+                <img src="<?= $previewUrl ?>" alt="attachment" style="max-width:400px;max-height:400px">
+            <?php elseif ($ext === 'pdf') : ?>
+                <p><a href="<?= $attachmentUrl ?>" target="_blank">Open PDF in new tab</a></p>
+                <iframe src="<?= $previewUrl ?>" style="width:100%;height:600px;border:0" title="PDF preview"></iframe>
+            <?php elseif ($ext === 'txt') : ?>
+                <?php if (file_exists($storagePath)) :
+                    $text = htmlspecialchars(file_get_contents($storagePath)); ?>
+                    <pre style="white-space:pre-wrap;word-break:break-word;"><?= $text ?></pre>
+                <?php else: ?>
+                    <p>Text file missing.</p>
+                <?php endif; ?>
+            <?php else: ?>
+                <p><a href="<?= $attachmentUrl ?>" target="_blank">View attachment</a></p>
+            <?php endif; ?>
+
+            <p><a href="<?= $attachmentUrl ?>&download=1">Download</a></p>
+        <?php else: ?>
+            <p>No attachment.</p>
+        <?php endif; ?>
+    </div>
     <div>
         <?php foreach($folders as $folder) : ?>
             <div class="form-group">

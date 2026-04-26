@@ -4,20 +4,24 @@ require base_path("views/partials/nav.php");
 ?>
 <div class="container">
     <h2>Save password</h2>
+    <?php $old = $_SESSION['old'] ?? []; ?>
     <form method="POST" action="/passwords" enctype="multipart/form-data">
         <div class="form-group">
             <label for="name">Name</label>
-            <input type="text" name="name" id="name" value="<?= htmlspecialchars($_POST['name'] ?? '') ?>">
+            <input type="text" name="name" id="name" value="<?= htmlspecialchars($old['name'] ?? $_POST['name'] ?? '') ?>">
+            <?php if (!empty($errors['body'])): ?>
+                <p class="error"><?= htmlspecialchars($errors['body']) ?></p>
+            <?php endif; ?>
         </div>
 
         <div class="form-group">
             <label for="login-data">Login data</label>
-            <input type="text" name="login_data" id="login_data" value="<?= htmlspecialchars($_POST['login_data'] ?? '') ?>">
+            <input type="text" name="login_data" id="login_data" value="<?= htmlspecialchars($old['login_data'] ?? $_POST['login_data'] ?? '') ?>">
         </div>
 
         <div class="form-group">
             <label for="password">Password</label>
-            <input type="password" name="password" id="password" value="<?= htmlspecialchars($_POST['password'] ?? '') ?>">
+            <input type="password" name="password" id="password" value="<?= htmlspecialchars($old['password'] ?? $_POST['password'] ?? '') ?>">
         </div>
 
         <div>
@@ -36,6 +40,9 @@ require base_path("views/partials/nav.php");
             <label for="attachment">Attachment (optional) — PDF, TXT, PNG (max 5MB)</label>
             <input type="hidden" name="MAX_FILE_SIZE" value="5242880">
             <input type="file" name="attachment" id="attachment" accept=".pdf,.txt,image/png">
+            <?php if (!empty($errors['attachment'])): ?>
+                <p class="text-red-400"><?= htmlspecialchars($errors['attachment']) ?></p>
+            <?php endif; ?>
         </div>
 
         <script>
@@ -63,7 +70,8 @@ require base_path("views/partials/nav.php");
 
     </form>
 </div>
-
 <?php
+// clear flash errors/old after showing
+unset($_SESSION['errors'], $_SESSION['old']);
 require base_path("views/partials/footer.php");
 ?>

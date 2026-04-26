@@ -47,7 +47,7 @@ $db->query($sql, [
     'login_data' => $login_data,
     'password' => $password,
     'folder_id' => $folder_id,
-    'id'   => $id
+    'id' => $id
 ]);
 
 redirect('/passwords');

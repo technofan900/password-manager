@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 17, 2026 at 04:37 PM
+-- Generation Time: Apr 26, 2026 at 12:29 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -96,7 +96,7 @@ INSERT INTO `passwords` (`id`, `name`, `login_data`, `password`, `userID`, `fold
 (7, 'pass1', '1123', '1234', 7, NULL),
 (8, 'pass2', '1234rt', '56789o', 7, 1),
 (9, 'pass3', 'qwedf', '12345t', 7, 1),
-(11, 'sazxdsa', 'axszx', 'xasz', 12, NULL);
+(11, 'sazxdsa', 'axszx', 'xasz', 12, 5);
 
 --
 -- Indexes for dumped tables

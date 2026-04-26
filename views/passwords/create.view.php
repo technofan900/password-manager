@@ -3,7 +3,7 @@ require base_path("views/partials/header.php");
 require base_path("views/partials/nav.php");
 ?>
 <div class="container">
-    <h2>Create note</h2>
+    <h2>Save password</h2>
     <form method="POST" action="/passwords">
         <div class="form-group">
             <label for="name">Name</label>

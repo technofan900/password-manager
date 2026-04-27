@@ -27,9 +27,14 @@ require base_path("views/partials/nav.php");
                 <iframe src="<?= $previewUrl ?>" style="width:100%;height:600px;border:0" title="PDF preview"></iframe>
             <?php elseif ($ext === 'txt') : ?>
                 <?php if (file_exists($storagePath)) :
-                    $text = htmlspecialchars(file_get_contents($storagePath)); ?>
-                    <pre style="white-space:pre-wrap;word-break:break-word;"><?= $text ?></pre>
-                <?php else: ?>
+                    $raw = decrypt_file_to_string($storagePath);
+                    if ($raw === false) {
+                        echo '<p>Unable to read attachment.</p>';
+                    } else {
+                        $text = htmlspecialchars($raw);
+                        ?><pre style="white-space:pre-wrap;word-break:break-word;"><?= $text ?></pre><?php
+                    }
+                else: ?>
                     <p>Text file missing.</p>
                 <?php endif; ?>
             <?php else: ?>

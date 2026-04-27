@@ -32,8 +32,14 @@ if (! file_exists($filePath)) {
     abort();
 }
 
+// decrypt to temp file to determine mime and to stream decrypted content
+$tempPath = decrypt_file_to_temp($filePath);
+if (! $tempPath) {
+    abort();
+}
+
 $finfo = finfo_open(FILEINFO_MIME_TYPE);
-$mime = finfo_file($finfo, $filePath);
+$mime = finfo_file($finfo, $tempPath);
 finfo_close($finfo);
 
 $download = isset($_GET['download']);
@@ -42,7 +48,7 @@ $inline = isset($_GET['inline']);
 $inlineTypes = ['image/png', 'application/pdf', 'text/plain'];
 
 header('Content-Type: ' . $mime);
-header('Content-Length: ' . filesize($filePath));
+header('Content-Length: ' . filesize($tempPath));
 
 if ($download) {
     header('Content-Disposition: attachment; filename="' . $basename . '"');
@@ -54,5 +60,6 @@ if ($download) {
     }
 }
 
-readfile($filePath);
+readfile($tempPath);
+@unlink($tempPath);
 exit;

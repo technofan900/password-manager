@@ -84,7 +84,7 @@ if (isset($_FILES['attachment']) && ($_FILES['attachment']['error'] ?? UPLOAD_ER
     $newName = $baseName . '_' . time() . '.' . $ext;
     $destination = $uploadsDir . '/' . $newName;
 
-    if (! move_uploaded_file($file['tmp_name'], $destination)) {
+    if (! encrypt_uploaded_file($file['tmp_name'], $destination)) {
         $_SESSION['errors'] = ['attachment' => 'Failed to save uploaded file.'];
         $_SESSION['old'] = ['name' => $name, 'login_data' => $login_data, 'password' => $password];
         redirect('/passwords/create');

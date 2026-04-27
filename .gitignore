@@ -1,0 +1,6 @@
+.env
+/public/uploads/
+/storage/uploads/
+/vendor/
+node_modules/
+.DS_Store

@@ -41,11 +41,13 @@ if (! empty($errors)) {
 
 $folder_id = $folder_id === '' ? null : (int) $folder_id;
 
+$encrypted = encrypt_string_for_storage($password);
+
 $sql = "UPDATE passwords SET name = :name, login_data = :login_data, password = :password, folder_id = :folder_id WHERE id = :id";
 $db->query($sql, [
     'name' => $name,
     'login_data' => $login_data,
-    'password' => $password,
+    'password' => $encrypted,
     'folder_id' => $folder_id,
     'id' => $id
 ]);

@@ -8,7 +8,13 @@ $db = App::resolve(Database::class);
 $userId = $_SESSION['user']['id'];
 
 $sql = "SELECT * FROM passwords WHERE id = :id"; 
-$note = $db->query($sql, ['id' => $_GET['id']])->findOrFail();
+ $note = $db->query($sql, ['id' => $_GET['id']])->findOrFail();
+
+// Decrypt password for display
+if (! empty($note['password'])) {
+    $dec = decrypt_string_from_storage($note['password']);
+    $note['password'] = $dec === false ? '' : $dec;
+}
 
 
 $foldersql = "SELECT COALESCE(f.folder_name, 'None') AS folder_name

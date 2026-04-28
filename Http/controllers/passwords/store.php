@@ -93,11 +93,13 @@ if (isset($_FILES['attachment']) && ($_FILES['attachment']['error'] ?? UPLOAD_ER
     $attachment = $newName; // store only filename
 }
 
+$encrypted = encrypt_string_for_storage($password);
+
 $sql = "INSERT INTO passwords (name, login_data, password, userID, folder_id, attachment) VALUES (:name, :login_data, :password, :userID, :folder_id, :attachment)";
 $db->query($sql, [
     'name' => $name,
     'login_data' => $login_data,
-    'password' => $password,
+    'password' => $encrypted,
     'userID' => $userID,
     'folder_id' => $folder,
     'attachment' => $attachment

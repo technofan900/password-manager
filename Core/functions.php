@@ -100,3 +100,31 @@ function decrypt_file_to_string($encryptedPath) {
     @unlink($tmp);
     return $data;
 }
+
+// --- String encryption helpers for DB fields ---
+function encrypt_string_for_storage($plaintext) {
+    if ($plaintext === null) return null;
+    $key = get_encryption_key();
+    $cipher = 'aes-256-cbc';
+    $ivLen = openssl_cipher_iv_length($cipher);
+    $iv = openssl_random_pseudo_bytes($ivLen);
+    $ciphertext = openssl_encrypt($plaintext, $cipher, $key, OPENSSL_RAW_DATA, $iv);
+    if ($ciphertext === false) return false;
+    // store as base64(iv + ciphertext)
+    return base64_encode($iv . $ciphertext);
+}
+
+function decrypt_string_from_storage($b64) {
+    if ($b64 === null) return null;
+    $raw = base64_decode($b64, true);
+    if ($raw === false) return false;
+    $key = get_encryption_key();
+    $cipher = 'aes-256-cbc';
+    $ivLen = openssl_cipher_iv_length($cipher);
+    if (strlen($raw) <= $ivLen) return false;
+    $iv = substr($raw, 0, $ivLen);
+    $ciphertext = substr($raw, $ivLen);
+    $plaintext = openssl_decrypt($ciphertext, $cipher, $key, OPENSSL_RAW_DATA, $iv);
+    if ($plaintext === false) return false;
+    return $plaintext;
+}

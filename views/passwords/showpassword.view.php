@@ -7,9 +7,15 @@ require base_path("views/partials/nav.php");
     <div>
         <h1><?= $note['name'] ?></h1>
         <label for="login_data">Login</label>
-        <input type="text" name="login_data" value="<?= $note['login_data'] ?>" aria-label="Read-only name" readonly>
+        <div style="display:flex;gap:8px;align-items:center">
+            <input id="login_data" type="text" name="login_data" value="<?= $note['login_data'] ?>" aria-label="Read-only login" readonly>
+            <button type="button" class="copy-btn" data-copy-target="login_data">Copy</button>
+        </div>
         <label for="password">Password</label>
-        <input type="text" name="password" value="<?= $note['password'] ?>" aria-label="Read-only name" readonly>
+        <div style="display:flex;gap:8px;align-items:center">
+            <input id="password" type="text" name="password" value="<?= $note['password'] ?>" aria-label="Read-only password" readonly>
+            <button type="button" class="copy-btn" data-copy-target="password">Copy</button>
+        </div>
     </div>
     <div class="attachment">
         <?php if (!empty($note['attachment'])):
@@ -67,3 +73,46 @@ require base_path("views/partials/nav.php");
 <?php
 require base_path("views/partials/footer.php");
 ?>
+
+<script>
+document.addEventListener('click', function(e){
+    if (!e.target.classList) return;
+    if (e.target.classList.contains('copy-btn')){
+        var targetId = e.target.getAttribute('data-copy-target');
+        var input = document.getElementById(targetId);
+        if (!input) return;
+        var value = input.value || '';
+        if (navigator.clipboard && navigator.clipboard.writeText){
+            navigator.clipboard.writeText(value).then(function(){
+                showTemporary(e.target, 'Copied!');
+            }).catch(function(){
+                fallbackCopy(value, e.target);
+            });
+        } else {
+            fallbackCopy(value, e.target);
+        }
+    }
+});
+
+function fallbackCopy(text, btn){
+    var ta = document.createElement('textarea');
+    ta.value = text;
+    ta.style.position = 'fixed';
+    ta.style.left = '-9999px';
+    document.body.appendChild(ta);
+    ta.select();
+    try{
+        document.execCommand('copy');
+        showTemporary(btn, 'Copied!');
+    }catch(err){
+        showTemporary(btn, 'Unable');
+    }
+    document.body.removeChild(ta);
+}
+
+function showTemporary(btn, text){
+    var original = btn.textContent;
+    btn.textContent = text;
+    setTimeout(function(){ btn.textContent = original; }, 1500);
+}
+</script>

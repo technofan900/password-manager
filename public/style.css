@@ -132,3 +132,14 @@ div ul .folder_name {
 .back-button {
     font-size: 1.3rem; 
 }
+
+
+/* Settings */
+.settings-img {
+    width: 80%;
+}
+
+/* dark mode */
+.dark-mode {
+    padding-bottom: 1rem;
+}

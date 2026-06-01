@@ -15,6 +15,15 @@ $router->post('/register', 'register/create.php')->only('guest');
 //register pop up
 $router->get("/pop_up", 'register/popup.php')->only('auth');
 
+// Settings page
+if (isset($_SESSION['user'])) {
+    $auth = 'auth';
+} else {
+    $auth = 'guest';
+}
+$router->get('/settings', 'settings/index.php')->only($auth);
+$router->post('/set-setting', 'settings/set.php')->only('auth');
+
 // Passwords page
 $router->get("/passwords", "passwords/index.php")->only('auth');
 $router->get("/passwords/create", "passwords/create.php")->only('auth');

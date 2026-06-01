@@ -32,6 +32,23 @@ class Authenticator {
             'email' => $user['email']
         ];
         session_regenerate_id(true);
+
+        // Auto-fill persisted password settings for the user (or global fallback)
+        $storageDir = __DIR__ . '/../storage';
+        $filePath = $storageDir . '/password_settings.json';
+
+        if (file_exists($filePath)) {
+            $json = @file_get_contents($filePath);
+            $data = $json ? json_decode($json, true) : null;
+            if (is_array($data)) {
+                $userId = $user['id'] ?? null;
+                if ($userId && isset($data[(string) $userId])) {
+                    $_SESSION['password_settings'] = $data[(string) $userId];
+                } elseif (isset($data['global'])) {
+                    $_SESSION['password_settings'] = $data['global'];
+                }
+            }
+        }
     }
 
     public function logout() {

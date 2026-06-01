@@ -15,6 +15,8 @@ $login_data = $_POST['login_data'] ?? '';
 $password = $_POST['password'] ?? '';
 $folder = $_POST['folder_select'] ?? '';
 
+$pwRules = $_SESSION['password_settings'] ?? null;
+
 if ($folder === ' ') {
     $folder = null; // Convert empty string to NULL
 }
@@ -22,12 +24,16 @@ if ($folder === ' ') {
 // attachment will be set after validation if upload present
 $attachment = null;
 
-$body_min_ln = 3;
+$body_min_ln = 1;
 $body_max_ln = 256;
 
 if (! Validator::string($name, $body_min_ln, $body_max_ln)) {
-    $errors['body'] = "The body must be between {$body_min_ln} and {$body_max_ln} characters";
+    $errors['name'] = "The name must be between {$body_min_ln} and {$body_max_ln} characters";
 }
+
+// Validate password against user-saved password rules (if any)
+$passwordErrors = Validator::checkPasswordStrength($password, $pwRules);
+$errors['password'] = implode(' ', $passwordErrors);
 
 if (! empty($errors)) {
     $_SESSION['errors'] = $errors;
@@ -59,7 +65,7 @@ if (isset($_FILES['attachment']) && ($_FILES['attachment']['error'] ?? UPLOAD_ER
 
     $finfo = finfo_open(FILEINFO_MIME_TYPE);
     $mime = finfo_file($finfo, $file['tmp_name']);
-    finfo_close($finfo);
+    unset($finfo);
 
     $allowed = [
         'application/pdf' => 'pdf',

@@ -19,9 +19,7 @@
             <li><a class="register" href="/register">Register</a></li>
           <?php endif; ?>
           <li>
-            <label class="switch" title="Toggle theme">
-              <input id="theme-switch" type="checkbox" role="switch" aria-label="Toggle theme">
-            </label>
+            <a href="/settings"><img class="settings-img" src="/assets/icons8-settings.svg" alt="Settings"></a>
           </li>
       </ul>
     </nav>

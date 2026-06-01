@@ -5,12 +5,16 @@ require base_path("views/partials/nav.php");
 <div class="container">
     <h2>Save password</h2>
     <?php $old = $_SESSION['old'] ?? []; ?>
+    <?php $errors = $_SESSION['errors'] ?? []; ?>
     <form method="POST" action="/passwords" enctype="multipart/form-data">
         <div class="form-group">
-            <label for="name">Name</label>
-            <input type="text" name="name" id="name" value="<?= htmlspecialchars($old['name'] ?? $_POST['name'] ?? '') ?>">
-            <?php if (!empty($errors['body'])): ?>
-                <p class="error"><?= htmlspecialchars($errors['body']) ?></p>
+            <?php if(!empty($errors['name'])) : ?>
+                <label for="name">Name</label>
+                <input type="text" name="name" id="name" aria-invalid="true" aria-describedby="password-helper" value="<?= htmlspecialchars($old['name'] ?? $_POST['name'] ?? '') ?>">
+                <small id="password-helper" class="text-red-400 text-sm"><?= htmlspecialchars($errors['name']) ?></small>
+            <?php else : ?>
+                <label for="name">Name</label>
+                <input type="text" name="name" id="name" value="<?= htmlspecialchars($old['name'] ?? $_POST['name'] ?? '') ?>">
             <?php endif; ?>
         </div>
 
@@ -18,10 +22,26 @@ require base_path("views/partials/nav.php");
             <label for="login-data">Login data</label>
             <input type="text" name="login_data" id="login_data" value="<?= htmlspecialchars($old['login_data'] ?? $_POST['login_data'] ?? '') ?>">
         </div>
-
+ 
         <div class="form-group">
-            <label for="password">Password</label>
-            <input type="password" name="password" id="password" value="<?= htmlspecialchars($old['password'] ?? $_POST['password'] ?? '') ?>">
+            <?php if(!empty($errors['password'])) : ?>
+                <label for="password">Password</label>
+                <input type="password" name="password" id="password" aria-invalid="true" aria-describedby="password-helper" value="<?= htmlspecialchars($old['password'] ?? $_POST['password'] ?? '') ?>">
+                <small id="password-helper" class="text-red-400 text-sm"><?= htmlspecialchars($errors['password']) ?></small>
+            <?php else : ?>
+                <label for="password">Password</label>
+                <input type="password" name="password" id="password" aria-describedby="password-helper" value="<?= htmlspecialchars($old['password'] ?? $_POST['password'] ?? '') ?>">
+
+                <small id="password-helper">
+                    <?php if (!empty($requirements)) : ?>
+                        <ul class="text-sm text-gray-600" style="margin:0; padding-left:1.2em">
+                            <?php foreach ($requirements as $req) : ?>
+                                <li><?= htmlspecialchars($req) ?></li>
+                            <?php endforeach; ?>
+                        </ul>
+                    <?php endif; ?>
+                </small>
+            <?php endif; ?>
         </div>
 
         <div>

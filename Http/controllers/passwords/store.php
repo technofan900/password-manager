@@ -33,7 +33,9 @@ if (! Validator::string($name, $body_min_ln, $body_max_ln)) {
 
 // Validate password against user-saved password rules (if any)
 $passwordErrors = Validator::checkPasswordStrength($password, $pwRules);
-$errors['password'] = implode(' ', $passwordErrors);
+if (! empty($passwordErrors)) {
+    $errors['password'] = implode(' ', $passwordErrors);
+}
 
 if (! empty($errors)) {
     $_SESSION['errors'] = $errors;

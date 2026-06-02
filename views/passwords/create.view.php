@@ -29,14 +29,14 @@ require base_path("views/partials/nav.php");
             <?php if(!empty($errors['password'])) : ?>
                 <label for="password">Password -- <a href="/password/generate">Generate password</a></label>
                 <fieldset role="group">
-                    <input type="password" name="password" id="password" aria-invalid="true" aria-describedby="password-helper" value="<?= htmlspecialchars($randPassword ?? $old['password'] ?? $_POST['password'] ?? '') ?>">
+                    <input type="password" name="password" id="password" aria-invalid="true" aria-describedby="password-helper" value="<?= htmlspecialchars($old['password']?? $randPassword  ?? $_POST['password'] ?? '') ?>">
                     <button id="togglePassword" type="button">Show</button>
                 </fieldset>
                 <small id="password-helper" class="text-red-400 text-sm"><?= htmlspecialchars($errors['password']) ?></small>
             <?php else : ?>
                 <label for="password">Password -- <a href="/password/generate">Generate password</a></label>
                 <fieldset role="group">
-                    <input type="password" name="password" id="password" aria-describedby="password-helper" value="<?= htmlspecialchars($randPassword ?? $old['password'] ?? $_POST['password'] ?? '') ?>">
+                    <input type="password" name="password" id="password" aria-describedby="password-helper" value="<?= htmlspecialchars($old['password'] ?? $randPassword ?? $_POST['password'] ?? '') ?>">
                     <button id="togglePassword" type="button">Show</button>
                 </fieldset>
 
@@ -55,9 +55,9 @@ require base_path("views/partials/nav.php");
         <div>
             <label for="folder_select">Folder (Optional)</label>
             <select name="folder_select" id="folder_select" aria-label="Select">
-                <option selected value=" ">None</option>
+                <option value=" " <?= empty($old['folder_select']) || $old['folder_select'] === ' ' ? 'selected' : '' ?>>None</option>
                 <?php foreach($folders as $folder) : ?>
-                    <option value="<?= $folder['id'] ?>">
+                    <option value="<?= $folder['id'] ?>" <?= isset($old['folder_select']) && $old['folder_select'] == $folder['id'] ? 'selected' : '' ?>>
                         <?= htmlspecialchars($folder['folder_name']) ?>
                     </option>
                 <?php endforeach; ?>

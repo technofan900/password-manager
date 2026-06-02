@@ -156,7 +156,7 @@ function decrypt_string_from_storage($b64) {
         $upper = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
         $lower = 'abcdefghijklmnopqrstuvwxyz';
         $numbers = '0123456789';
-        $special = '!@#$%^&*()-_=+[]{}<>?,.'; // reasonable safe set
+        $special = '!@#$%^&*()-_=+[]{}?,.'; // reasonable safe set
 
         // Build character pool and ensure required characters
         $pool = '';

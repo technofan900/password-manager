@@ -11,9 +11,11 @@
         </label>
     </div>
 
+    <?php if($_SESSION['user'] ?? false) : ?>
     <div class="password-save-settings">
         <h2>Password save settings</h2>
         <?php $pwSettings = $_SESSION['password_settings'] ?? []; ?>
+        
         <form method="POST" action="/set-setting">
             <fieldset>
                 <label>
@@ -40,6 +42,7 @@
             <button type="submit">Apply</button>
         </form>
     </div>
+    <?php endif; ?>
 </div>
 
 <?php require base_path('views/partials/footer.php'); ?>

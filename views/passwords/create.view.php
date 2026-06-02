@@ -6,6 +6,8 @@ require base_path("views/partials/nav.php");
     <h2>Save password</h2>
     <?php $old = $_SESSION['old'] ?? []; ?>
     <?php $errors = $_SESSION['errors'] ?? []; ?>
+    <?php $randPassword = $_SESSION['generated_password'] ?? '';?>
+    <?php unset($_SESSION['generated_password']); ?>
     <form method="POST" action="/passwords" enctype="multipart/form-data">
         <div class="form-group">
             <?php if(!empty($errors['name'])) : ?>
@@ -25,12 +27,18 @@ require base_path("views/partials/nav.php");
  
         <div class="form-group">
             <?php if(!empty($errors['password'])) : ?>
-                <label for="password">Password</label>
-                <input type="password" name="password" id="password" aria-invalid="true" aria-describedby="password-helper" value="<?= htmlspecialchars($old['password'] ?? $_POST['password'] ?? '') ?>">
+                <label for="password">Password -- <a href="/password/generate">Generate password</a></label>
+                <fieldset role="group">
+                    <input type="password" name="password" id="password" aria-invalid="true" aria-describedby="password-helper" value="<?= htmlspecialchars($randPassword ?? $old['password'] ?? $_POST['password'] ?? '') ?>">
+                    <button id="togglePassword" type="button">Show</button>
+                </fieldset>
                 <small id="password-helper" class="text-red-400 text-sm"><?= htmlspecialchars($errors['password']) ?></small>
             <?php else : ?>
-                <label for="password">Password</label>
-                <input type="password" name="password" id="password" aria-describedby="password-helper" value="<?= htmlspecialchars($old['password'] ?? $_POST['password'] ?? '') ?>">
+                <label for="password">Password -- <a href="/password/generate">Generate password</a></label>
+                <fieldset role="group">
+                    <input type="password" name="password" id="password" aria-describedby="password-helper" value="<?= htmlspecialchars($randPassword ?? $old['password'] ?? $_POST['password'] ?? '') ?>">
+                    <button id="togglePassword" type="button">Show</button>
+                </fieldset>
 
                 <small id="password-helper">
                     <?php if (!empty($requirements)) : ?>
@@ -65,6 +73,7 @@ require base_path("views/partials/nav.php");
             <?php endif; ?>
         </div>
 
+
         <script>
             (function(){
                 var form = document.currentScript && document.currentScript.parentNode.querySelector('form') || document.querySelector('form');
@@ -90,6 +99,24 @@ require base_path("views/partials/nav.php");
 
     </form>
 </div>
+
+<script>
+    (function show_password(){
+      const toggle = document.getElementById('togglePassword');
+      const pwd = document.getElementById('password');
+      if (!toggle || !pwd) return;
+      toggle.addEventListener('click', function(){
+        if (pwd.type === 'password'){
+          pwd.type = 'text';
+          this.textContent = 'Hide';
+        } else {
+          pwd.type = 'password';
+          this.textContent = 'Show';
+        }
+      });
+    })();
+</script>
+
 <?php
 // clear flash errors/old after showing
 unset($_SESSION['errors'], $_SESSION['old']);

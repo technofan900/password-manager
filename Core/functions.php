@@ -128,3 +128,85 @@ function decrypt_string_from_storage($b64) {
     if ($plaintext === false) return false;
     return $plaintext;
 }
+
+
+    function randomPassword($secSettings) {
+
+        if (!empty($_SESSION['generated_password'])) {
+            unset($_SESSION['generated_password']);
+        }
+
+        $rules = $secSettings ?? [];
+
+        $min = (int) ($rules['min_length'] ?? 12);
+        $reqUpper = !empty($rules['require_uppercase']);
+        $reqLower = isset($rules['require_lowercase']) ? (bool) $rules['require_lowercase'] : true;
+        $reqNums = !empty($rules['require_numbers']);
+        $reqSpec = !empty($rules['require_special']);
+
+        // If only lowercase is required (other requirements disabled),
+        // promote to full-strength rules and enforce a minimum length of 12.
+        if ($reqLower && !$reqUpper && !$reqNums && !$reqSpec) {
+            $reqUpper = true;
+            $reqNums = true;
+            $reqSpec = true;
+            $min = max($min, 12);
+        }
+
+        $upper = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        $lower = 'abcdefghijklmnopqrstuvwxyz';
+        $numbers = '0123456789';
+        $special = '!@#$%^&*()-_=+[]{}<>?,.'; // reasonable safe set
+
+        // Build character pool and ensure required characters
+        $pool = '';
+        $required = [];
+
+        if ($reqUpper) {
+            $pool .= $upper;
+            $required[] = $upper[random_int(0, strlen($upper) - 1)];
+        }
+
+        if ($reqLower) {
+            $pool .= $lower;
+            $required[] = $lower[random_int(0, strlen($lower) - 1)];
+        }
+
+        if ($reqNums) {
+            $pool .= $numbers;
+            $required[] = $numbers[random_int(0, strlen($numbers) - 1)];
+        }
+
+        if ($reqSpec) {
+            $pool .= $special;
+            $required[] = $special[random_int(0, strlen($special) - 1)];
+        }
+
+        // If no specific rules were enabled, use a strong default pool
+        if ($pool === '') {
+            $pool = $lower . $upper . $numbers . $special;
+            // still ensure at least one lower-case
+            $required[] = $lower[random_int(0, strlen($lower) - 1)];
+        }
+
+        // Ensure length is at least 12 and covers required categories
+        $length = max(12, $min, count($required));
+
+        $passwordChars = $required;
+
+        // Fill the rest from the pool
+        for ($i = count($required); $i < $length; $i++) {
+            $passwordChars[] = $pool[random_int(0, strlen($pool) - 1)];
+        }
+
+        // Shuffle securely (Fisher-Yates)
+        $n = count($passwordChars);
+        for ($i = $n - 1; $i > 0; $i--) {
+            $j = random_int(0, $i);
+            $tmp = $passwordChars[$i];
+            $passwordChars[$i] = $passwordChars[$j];
+            $passwordChars[$j] = $tmp;
+        }
+
+        return implode('', $passwordChars);
+    }

@@ -37,6 +37,8 @@ $router->get('/password/popup', 'passwords/popup.php')->only('auth');
 $router->delete('/passwords', 'passwords/destroy.php')->only('auth');
 $router->get("/password", "passwords/show.php")->only('auth');
 $router->get("/password/edit", "passwords/edit.php")->only('auth');
+//generate password
+$router->get("/password/generate", "passwords/generate.php")->only('auth');
 
 // Secure attachment serving
 $router->get('/attachment', 'attachments/show.php')->only('auth');

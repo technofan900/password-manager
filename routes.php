@@ -46,3 +46,6 @@ $router->get('/attachment', 'attachments/show.php')->only('auth');
 // create folders
 $router->get("/folders" , "folders/show.php")->only('auth');
 $router->post("/folder" , 'folders/store.php')->only('auth');
+
+// Admin
+$router->get("/admin", "admin/index.php")->only("guest");

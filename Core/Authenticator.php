@@ -25,6 +25,21 @@ class Authenticator {
         return false;
     }
 
+    public function adminAttempt($login, $password) {
+        $admin = App::resolve(Database::class)->query("SELECT * FROM admin WHERE username = :username", [
+            'username' => $login
+        ])->find();
+
+        if ($admin && password_verify($password, $admin['username'])) {
+            $this->login([
+                'id' => $admin['id'],
+                'admin' => $admin['username']
+            ]);
+            return true;
+        }
+
+        return false;
+    }
 
     public function login ($user) {
         $_SESSION['user'] = [

@@ -5,9 +5,9 @@ class Admin
 {
     public function handle()
     {
-        // if (! $_SESSION['user'] ?? false) {
-        //         header('location: /');
-        //         exit();
-        // }
+        if (! $_SESSION['admin'] ?? false) {
+                header('location: /');
+                exit();
+        }
     }
 }

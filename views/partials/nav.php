@@ -19,7 +19,7 @@
             <li><a class="register" href="/register">Register</a></li>
           <?php endif; ?>
           <li>
-            <a href="/settings"><img class="settings-img" src="/assets/icons8-settings.svg" alt="Settings"></a>
+            <a href="/settings"><img class="settings-img" src="/assets/icons8-settings-48.png" alt="Settings"></a>
           </li>
       </ul>
     </nav>

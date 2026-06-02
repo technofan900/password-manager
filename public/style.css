@@ -124,6 +124,10 @@ div ul .folder_name {
     color: #fc8f8f; /* red-400 */
 }
 
+.text-success {
+    color: green;
+}
+
 .text-sm {
     font-size: 0.875rem;
 }
@@ -133,10 +137,10 @@ div ul .folder_name {
     font-size: 1.3rem; 
 }
 
-
-/* Settings */
-.settings-img {
-    width: 80%;
+/* settings */
+.settings-img:hover {
+    box-shadow: inset -1px 1px 36px 0px rgba(0, 128, 192, 0.34);
+    border-radius: 8px;
 }
 
 /* dark mode */

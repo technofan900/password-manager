@@ -89,16 +89,6 @@ CREATE TABLE `passwords` (
 -- Dumping data for table `passwords`
 --
 
-INSERT INTO `passwords` (`id`, `name`, `login_data`, `password`, `userID`, `folder_id`) VALUES
-(1, 'test', 'qwerty', '12345', 1, NULL),
-(2, 'dati', 'qwerty', '123456', 1, NULL),
-(3, 'weeds', 'qwerty1', '1234567', 1, NULL),
-(6, 'testds', 'dooods', 'qwerty1', 5, NULL),
-(7, 'pass1', '1123', '1234', 7, NULL),
-(8, 'pass2', '1234rt', '56789o', 7, 1),
-(9, 'pass3', 'qwedf', '12345t', 7, 1),
-(11, 'sazxdsa', 'axszx', 'xasz', 12, 5);
-
 -- Update existing inserts to include attachment = NULL
 INSERT INTO `passwords` (`id`, `name`, `login_data`, `password`, `userID`, `folder_id`, `attachment`) VALUES
 (1, 'test', 'qwerty', '12345', 1, NULL, NULL),

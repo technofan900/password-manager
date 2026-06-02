@@ -33,6 +33,10 @@
                     Numbers
                 </label>
             </fieldset>
+            <?php if (!empty($_SESSION['success'])) : ?>
+                <small class="text-sm text-success"><?php echo $_SESSION['success']; ?></small>
+                <?php unset($_SESSION['success']); ?>
+            <?php endif; ?>
             <button type="submit">Apply</button>
         </form>
     </div>

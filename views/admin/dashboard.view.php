@@ -56,11 +56,25 @@
     <?php endif; ?>
 </div>
 
-    <div class="container setup">
-        <h1>Admin setup:</h1>
-        <p>To promote a user to admin status, use the CLI command:</p>
-        <code>php cli/promote-admin.php &lt;user_id_or_email&gt;</code>
-        <p>For more information, see <strong>ADMIN_SETUP.md</strong></p>
+    <div class="container admin-message-section">
+        <h1>Site-wide announcement</h1>
+        <p>Admin messages are shown as a popup to all users.</p>
+
+        <form action="/admin/message" method="post">
+            <label for="site_message">Message</label>
+            <textarea id="site_message" name="site_message" rows="5" required style="width: 100%; padding: 0.75rem; border-radius: 8px; border: 1px solid #ccc;"><?php echo htmlspecialchars($siteMessage ?? ''); ?></textarea>
+            <div style="margin-top: 1rem; display: flex; gap: 1rem; flex-wrap: wrap; align-items: center;">
+                <button type="submit" style="padding: 0.75rem 1.25rem; border: none; background: #0172AD; color: #fff; border-radius: 6px; cursor: pointer;">Save Announcement</button>
+                <button type="submit" name="site_message" value="" style="padding: 0.75rem 1.25rem; border: none; background: #e74c3c; color: #fff; border-radius: 6px; cursor: pointer;">Clear Announcement</button>
+            </div>
+        </form>
+
+        <?php if (! empty($siteMessage)): ?>
+            <div style="padding: 1rem;">
+                <strong>Current announcement:</strong>
+                <p style="margin: 0.75rem 0 0 0;"><?php echo nl2br(htmlspecialchars($siteMessage)); ?></p>
+            </div>
+        <?php endif; ?>
     </div>
 
 <?php require base_path('views/partials/footer.php'); ?>

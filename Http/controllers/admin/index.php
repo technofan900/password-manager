@@ -19,10 +19,13 @@ $totalFolders = $db->query("SELECT COUNT(*) as count FROM folders")->find()['cou
 // Get recent users
 $recentUsers = $db->query("SELECT id, username, email, created_at, is_admin FROM login ORDER BY created_at DESC LIMIT 5")->get();
 
+$siteMessage = get_site_message();
+
 view('admin/dashboard.view.php', [
     'totalUsers' => $totalUsers,
     'totalAdmins' => $totalAdmins,
     'totalPasswords' => $totalPasswords,
     'totalFolders' => $totalFolders,
-    'recentUsers' => $recentUsers
+    'recentUsers' => $recentUsers,
+    'siteMessage' => $siteMessage
 ]);

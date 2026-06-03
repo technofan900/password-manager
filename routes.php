@@ -49,3 +49,4 @@ $router->post("/folder" , 'folders/store.php')->only('auth');
 
 // Admin Panel (only accessible to admins)
 $router->get("/admin", "admin/index.php")->only("admin");
+$router->post("/admin/message", "admin/message.php")->only("admin");

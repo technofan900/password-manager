@@ -25,6 +25,43 @@ function view($path, $attributes = [] ) {
     require base_path("views/{$path}");
 }
 
+function get_site_message_path() {
+    return base_path('storage/site_message.json');
+}
+
+function get_site_message() {
+    $path = get_site_message_path();
+    if (! file_exists($path)) {
+        return null;
+    }
+
+    $json = file_get_contents($path);
+    $data = $json ? json_decode($json, true) : null;
+    return is_array($data) ? ($data['message'] ?? null) : null;
+}
+
+function save_site_message($message) {
+    $path = get_site_message_path();
+    $dir = dirname($path);
+    if (! is_dir($dir)) {
+        mkdir($dir, 0755, true);
+    }
+
+    $payload = [
+        'message' => $message,
+        'created_at' => date('c')
+    ];
+
+    return file_put_contents($path, json_encode($payload, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
+}
+
+function clear_site_message() {
+    $path = get_site_message_path();
+    if (file_exists($path)) {
+        unlink($path);
+    }
+}
+
 function login ($user) {
     $_SESSION['user'] = [
         'id' => $user['id'],

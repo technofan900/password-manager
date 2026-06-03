@@ -5,3 +5,4 @@
 node_modules/
 .DS_Store
 password_settings.json
+site_sessage.json

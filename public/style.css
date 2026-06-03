@@ -166,9 +166,19 @@ div ul .folder_name {
 
 .setup {
     margin-top: 2rem;
+    margin-bottom: 2rem;
     text-align: center;
 }
 
-.table-recent {
+.table-recent{
+    
     padding-top: 1rem;
 }
+
+.table-recent th {
+    text-align: center;
+}
+.table-recent td {
+    text-align: center;
+}
+

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 26, 2026 at 12:29 PM
+-- Generation Time: Jun 03, 2026 at 08:49 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -67,7 +67,8 @@ INSERT INTO `login` (`id`, `username`, `email`, `password`, `created_at`, `updat
 (1, 'test', '1@1', '$2y$10$nxIeSYvnT38DpnAZA4WvH.enmMX63314q7yJ87hebD4Gs/C5NTdIG', '2026-02-01 17:01:23', '2026-02-01 17:01:23'),
 (5, 'qwerty', 'qwer@ty.com', '$2y$10$hpNMAnNzePwwwbPeuy8LAO3ca4TyuSsTYbh6bLmF0jCJltyyFysma', '2026-03-03 18:56:17', '2026-03-03 18:56:17'),
 (7, '12qw', 'q@w.lv', '$2y$10$hM/iz.YeUGAITJCvYZlBIeEBmIwxEqqdqnqEmPi2Mry0wNMN7ZVNy', '2026-03-04 19:13:33', '2026-03-04 19:13:33'),
-(12, '13qw', '1@4.com', '$2y$10$T05Ge9gv/DqRsOQbHSLj2eDMmjJiu1s0yymSXfajfz6btvZmlkIoW', '2026-04-10 11:12:41', '2026-04-10 11:12:41');
+(12, '13qw', '1@4.com', '$2y$10$T05Ge9gv/DqRsOQbHSLj2eDMmjJiu1s0yymSXfajfz6btvZmlkIoW', '2026-04-10 11:12:41', '2026-04-10 11:12:41'),
+(13, 'qwer', 'qw@er.lv', '$2y$10$1UGEi/z87sH.BjnscYdQj..X0MRfHReTi2EKEv2cMQoLkxN8OZITi', '2026-04-29 05:57:03', '2026-04-29 05:57:03');
 
 -- --------------------------------------------------------
 
@@ -89,7 +90,6 @@ CREATE TABLE `passwords` (
 -- Dumping data for table `passwords`
 --
 
--- Update existing inserts to include attachment = NULL
 INSERT INTO `passwords` (`id`, `name`, `login_data`, `password`, `userID`, `folder_id`, `attachment`) VALUES
 (1, 'test', 'qwerty', '12345', 1, NULL, NULL),
 (2, 'dati', 'qwerty', '123456', 1, NULL, NULL),
@@ -98,7 +98,9 @@ INSERT INTO `passwords` (`id`, `name`, `login_data`, `password`, `userID`, `fold
 (7, 'pass1', '1123', '1234', 7, NULL, NULL),
 (8, 'pass2', '1234rt', '56789o', 7, 1, NULL),
 (9, 'pass3', 'qwedf', '12345t', 7, 1, NULL),
-(11, 'sazxdsa', 'axszx', 'xasz', 12, 5, NULL);
+(11, 'sazxdsa', 'axszx', 'xasz', 12, 5, NULL),
+(12, 'qwer', 'qwer', 'Yp2DpptslLIwfygl8m3vHnCw27UJuv3tY3AzpQ7WQ9E=', 13, NULL, 'image_1777442254.png'),
+(15, 'aasdfe', 'sdfagawe', 'Z2/l7gJjqqdocZ0Y5BSYy/Odr5nHfR8UumBe/e+4gGo=', 13, NULL, NULL);
 
 --
 -- Indexes for dumped tables
@@ -140,13 +142,13 @@ ALTER TABLE `folders`
 -- AUTO_INCREMENT for table `login`
 --
 ALTER TABLE `login`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `passwords`
 --
 ALTER TABLE `passwords`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- Constraints for dumped tables

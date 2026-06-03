@@ -17,6 +17,15 @@ body {
     padding: 0 2rem;
     background: var(--pico-background-color, #e0e0e0);
     color: var(--text-color, inherit);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.footer {
+    margin-top: auto;
+    border-top: 1px solid #ddd;
+    text-align: center;
 }
 
 a {
@@ -146,4 +155,20 @@ div ul .folder_name {
 /* dark mode */
 .dark-mode {
     padding-bottom: 1rem;
+}
+
+.grid-card {
+    border: 3px solid var(--pico-primary);
+    border-radius: 10px;
+    text-align: center;
+    padding: 10px;
+}
+
+.setup {
+    margin-top: 2rem;
+    text-align: center;
+}
+
+.table-recent {
+    padding-top: 1rem;
 }

@@ -16,7 +16,8 @@ class Authenticator {
 
         $this->login([
             'id' => $user['id'],
-            'email' => $user['email']
+            'email' => $user['email'],
+            'is_admin' => $user['is_admin'] ?? 0
             ]);
 
             return true;
@@ -46,6 +47,12 @@ class Authenticator {
             'id' => $user['id'],
             'email' => $user['email']
         ];
+        
+        // Set admin session flag if user is admin
+        if (isset($user['is_admin']) && $user['is_admin']) {
+            $_SESSION['admin'] = true;
+        }
+        
         session_regenerate_id(true);
 
         // Auto-fill persisted password settings for the user (or global fallback)

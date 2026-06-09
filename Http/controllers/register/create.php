@@ -56,11 +56,6 @@ $db->query('INSERT INTO login (username, email, password) VALUES (:username, :em
 
 $userID = $db->connection->lastInsertId();
 
-login([
-    'id' => $userID,
-    'email' => $email
-]);
-
 unset($_SESSION['old']);
 
 redirect('/pop_up');

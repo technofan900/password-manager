@@ -14,8 +14,8 @@ $router->delete('/login', 'login/destroy.php')->only('auth');
 // Register page
 $router->get('/register', 'register/show.php')->only('guest');
 $router->post('/register', 'register/create.php')->only('guest');
-//register pop up
-$router->get("/pop_up", 'register/popup.php')->only('auth');
+//register pop up (allow guests so newly-registered users can see it before logging in)
+$router->get("/pop_up", 'register/popup.php')->only('guest');
 
 // Settings page
 if (isset($_SESSION['user'])) {

@@ -7,3 +7,4 @@ node_modules/
 password_settings.json
 site_message.json
 composer.lock
+mail_errors.log

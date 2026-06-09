@@ -23,6 +23,12 @@ if (file_exists($dotenvPath)) {
     }
 }
 
+// Ensure Composer autoloader is available in all entrypoints
+$composerAutoload = __DIR__ . '/vendor/autoload.php';
+if (file_exists($composerAutoload)) {
+    require_once $composerAutoload;
+}
+
 $container = new Container();
 
 $container->bind('Core\Database', function () {
@@ -31,12 +37,19 @@ $container->bind('Core\Database', function () {
     return new Database($config['database']);
 });
 
-if (class_exists('Symfony\Component\Mailer\Mailer')) {
-    $container->bind('Symfony\Component\Mailer\MailerInterface', function () {
-        $dsn = getenv('MAILER_DSN') ?: 'sendmail://default';
-        return new \Symfony\Component\Mailer\Mailer(
-            \Symfony\Component\Mailer\Transport::fromDsn($dsn)
-        );
+// Bind a Symfony Mailer if MAILER_DSN is configured. Attempt to create the mailer
+// and log any errors; fall back to null mailer if creation fails.
+$mailerDsn = getenv('MAILER_DSN') ?: null;
+if ($mailerDsn) {
+    $container->bind('Symfony\\Component\\Mailer\\MailerInterface', function () use ($mailerDsn) {
+        $logPath = __DIR__ . '/storage/mail_errors.log';
+        try {
+            $transport = \Symfony\Component\Mailer\Transport::fromDsn($mailerDsn);
+            return new \Symfony\Component\Mailer\Mailer($transport);
+        } catch (\Throwable $ex) {
+            @file_put_contents($logPath, "[" . date('c') . "] bootstrap: failed to create symfony mailer: " . $ex->getMessage() . "\n", FILE_APPEND | LOCK_EX);
+            throw $ex;
+        }
     });
 }
 

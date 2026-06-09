@@ -11,8 +11,17 @@ if (file_exists(BASE_PATH . 'vendor/autoload.php')) {
 }
 
 spl_autoload_register(function ($class) {
-    $class = str_replace('\\', DIRECTORY_SEPARATOR, $class);
-    require base_path("{$class}.php");
+    // Only autoload our application namespaces to avoid intercepting vendor classes
+    if (!str_starts_with($class, 'Core\\') && !str_starts_with($class, 'Http\\')) {
+        return false;
+    }
+    $classPath = str_replace('\\', DIRECTORY_SEPARATOR, $class) . '.php';
+    $full = base_path($classPath);
+    if (file_exists($full)) {
+        require $full;
+        return true;
+    }
+    return false;
 });
 
 $router = new \Core\Router();

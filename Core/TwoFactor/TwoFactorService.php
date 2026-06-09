@@ -26,12 +26,24 @@ class TwoFactorService
 
     protected function getMailer()
     {
-        if (class_exists('Symfony\Component\Mailer\MailerInterface')) {
-            return App::resolve('Symfony\Component\Mailer\MailerInterface');
+        $this->logDebug("twofactor:getMailer attempting container resolve");
+        try {
+            $mailer = App::resolve('Symfony\\Component\\Mailer\\MailerInterface');
+            $this->logDebug('twofactor:getMailer resolved');
+            return $mailer;
+        } catch (\Throwable $ex) {
+            $this->logDebug('twofactor:getMailer resolve failed: ' . $ex->getMessage());
         }
 
-        // Fallback: return a null mailer placeholder (uses php mail())
+        $this->logDebug('twofactor:getMailer falling back to null');
         return null;
+    }
+
+    private function logDebug($message)
+    {
+        $path = base_path('storage/mail_errors.log');
+        $ts = date('c');
+        @file_put_contents($path, "[{$ts}] {$message}\n", FILE_APPEND | LOCK_EX);
     }
 
     public function hasPendingUser(): bool

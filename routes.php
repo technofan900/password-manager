@@ -7,6 +7,8 @@ $router->get('/about', 'about.php');
 // Login
 $router->get('/login', 'login/show.php')->only('guest');
 $router->post('/login', 'login/store.php')->only('guest');
+$router->get('/login/2fa', 'login/twofactor.php')->only('guest');
+$router->post('/login/2fa', 'login/verify.php')->only('guest');
 $router->delete('/login', 'login/destroy.php')->only('auth');
 
 // Register page

@@ -1,9 +1,14 @@
 <?php
 
-$errors = $_SESSION['errors'] ?? \Core\Session::getFlash('errors') ?? [];;
+$errors = $_SESSION['errors'] ?? \Core\Session::getFlash('errors') ?? [];
 $old = $_SESSION['old'] ?? [] ?? \Core\Session::getFlash('old') ?? [];
 
 unset($_SESSION['errors'], $_SESSION['old']);
+
+$twoFactorService = new \Core\TwoFactor\TwoFactorService();
+if ($twoFactorService->hasPendingUser()) {
+    redirect('/login/2fa');
+}
 
 view('login/login.view.php', [
     'errors' => $errors,

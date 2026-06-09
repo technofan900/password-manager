@@ -12,6 +12,12 @@ return [
     'app' => [
         // Encryption key: prefer env variable `APP_KEY` or `APP_ENCRYPTION_KEY`.
         // Do NOT keep real keys in this file. If env is missing, value will be null.
-        'encryption_key' => $envKey ?: null
-    ]
+        'encryption_key' => $envKey ?: null,
+        'email_two_factor_enabled' => getenv('EMAIL_2FA_ENABLED') !== 'false',
+        'email_two_factor_code_length' => intval(getenv('EMAIL_2FA_CODE_LENGTH') ?: 6),
+    ],
+    'mail' => [
+        'from' => getenv('MAIL_FROM') ?: 'no-reply@localhost',
+        'subject' => getenv('MAIL_SUBJECT') ?: 'Your authentication code'
+    ],
 ];

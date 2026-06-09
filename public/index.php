@@ -6,6 +6,10 @@ const BASE_PATH = __DIR__ . '/../';
 
 require BASE_PATH . 'Core/functions.php';
 
+if (file_exists(BASE_PATH . 'vendor/autoload.php')) {
+    require BASE_PATH . 'vendor/autoload.php';
+}
+
 spl_autoload_register(function ($class) {
     $class = str_replace('\\', DIRECTORY_SEPARATOR, $class);
     require base_path("{$class}.php");

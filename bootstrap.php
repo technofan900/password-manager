@@ -31,4 +31,13 @@ $container->bind('Core\Database', function () {
     return new Database($config['database']);
 });
 
+if (class_exists('Symfony\Component\Mailer\Mailer')) {
+    $container->bind('Symfony\Component\Mailer\MailerInterface', function () {
+        $dsn = getenv('MAILER_DSN') ?: 'sendmail://default';
+        return new \Symfony\Component\Mailer\Mailer(
+            \Symfony\Component\Mailer\Transport::fromDsn($dsn)
+        );
+    });
+}
+
 App::setContainer($container);

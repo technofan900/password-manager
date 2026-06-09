@@ -3,6 +3,7 @@
 namespace Core;
 use Core\App;
 use Core\Database;
+use Core\TwoFactor\TwoFactorService;
 
 class Authenticator {
 
@@ -12,18 +13,66 @@ class Authenticator {
             'username' => $login_data
         ])->find();
 
-    if ($user && password_verify($password, $user['password'])){
+        if ($user && password_verify($password, $user['password'])) {
+            if ($this->isTwoFactorEnabled()) {
+                $this->startTwoFactor($user);
+                return '2fa_required';
+            }
 
-        $this->login([
-            'id' => $user['id'],
-            'email' => $user['email'],
-            'is_admin' => $user['is_admin'] ?? 0
+            $this->login([
+                'id' => $user['id'],
+                'email' => $user['email'],
+                'is_admin' => $user['is_admin'] ?? 0
             ]);
 
             return true;
         }
 
         return false;
+    }
+
+    public function verifyTwoFactorCode($code) {
+        $twoFactor = new TwoFactorService();
+        if (! $twoFactor->isCodeValid($code)) {
+            return false;
+        }
+
+        $userId = $twoFactor->getPendingUserId();
+        if (! $userId) {
+            return false;
+        }
+
+        $user = App::resolve(Database::class)->query('SELECT * FROM login WHERE id = :id', [
+            'id' => $userId
+        ])->find();
+
+        if (! $user) {
+            $twoFactor->clear();
+            return false;
+        }
+
+        $this->login([
+            'id' => $user['id'],
+            'email' => $user['email'],
+            'is_admin' => $user['is_admin'] ?? 0
+        ]);
+
+        $twoFactor->clear();
+        return true;
+    }
+
+    protected function startTwoFactor($user)
+    {
+        $config = require base_path('config.php');
+        $codeLength = intval($config['app']['email_two_factor_code_length'] ?? 6);
+        $service = new TwoFactorService($codeLength);
+        $service->generateEmailCodeForUser((int) $user['id'], $user['email']);
+    }
+
+    protected function isTwoFactorEnabled(): bool
+    {
+        $config = require base_path('config.php');
+        return $config['app']['email_two_factor_enabled'] ?? true;
     }
 
     public function adminAttempt($login, $password) {

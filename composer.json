@@ -1,0 +1,15 @@
+{
+    "name": "technofan/password-manager",
+    "description": "kursa darbs - parolu menedzeris",
+    "autoload": {
+        "psr-4": {
+            "Technofan\\PasswordManager\\": "school-project-v1/"
+        }
+    },
+    "require": {
+        "scheb/2fa-email": "^7.13",
+        "picocss/pico": "^2.1",
+        "symfony/mailer": "^7.4",
+        "symfony/google-mailer": "^7.4"
+    }
+}

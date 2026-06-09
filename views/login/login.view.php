@@ -4,6 +4,7 @@ require base_path("views/partials/nav.php");
 ?>
     <div class="container">
       <h2>Log In</h2>
+      <p>After your password is verified, a one-time code will be sent to your email address.</p>
       <form method="POST" action="/login">
         <label>
           Email or username

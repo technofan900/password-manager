@@ -11,7 +11,13 @@ $form = new LoginForms();
 if ($form->validate($login, $password)) {
 
     $auth = new Authenticator();
-    if ($auth->attempt($login, $password)) {
+    $result = $auth->attempt($login, $password);
+
+    if ($result === '2fa_required') {
+        redirect('/login/2fa');
+    }
+
+    if ($result === true) {
         redirect('/');
     }
 

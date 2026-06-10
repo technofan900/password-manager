@@ -10,6 +10,7 @@ $router->post('/login', 'login/store.php')->only('guest');
 $router->get('/login/2fa', 'login/twofactor.php')->only('guest');
 $router->post('/login/2fa', 'login/verify.php')->only('guest');
 $router->delete('/login', 'login/destroy.php')->only('auth');
+$router->get('/login/recover', 'login/recover.php')->only('guest');
 
 // Register page
 $router->get('/register', 'register/show.php')->only('guest');

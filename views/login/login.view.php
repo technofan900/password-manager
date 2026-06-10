@@ -18,7 +18,7 @@ require base_path("views/partials/nav.php");
         </label>
 
         <label>
-          Password
+          Password -- <a href="/login/recover">Forgot password?</a>
           <fieldset role="group">
             <input id="password" name="password" type="password" placeholder="******" required>
             <?php if (isset($errors['password'])) : ?>

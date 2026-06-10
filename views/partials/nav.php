@@ -2,7 +2,7 @@
   <header>
     <nav class="container">
       <ul>
-        <li><a href="/"><strong>Mana Mājaslapa</strong></a></li>
+        <li><a href="/"><strong>Password Manager</strong></a></li>
       </ul>
       <ul>
         <li><a href="/">Sākums</a></li>

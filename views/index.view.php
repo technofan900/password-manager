@@ -1,9 +1,10 @@
 <?php require base_path('views/partials/header.php'); ?>
 <?php require base_path('views/partials/nav.php'); ?>
 <div class="container">
-  <h1>Laipni lūdzam!</h1>
+  <h1>Welcome to Password Manager</h1>
   <p>
-    Šis ir vienkāršs mājaslapas templates, kas izmanto classless CSS dizainu.
+    Store, organize, and manage your passwords securely in one place.
+    Our password manager helps you protect your accounts with strong security and easy access to your credentials.
   </p>
 
   <?php if ($siteMessage = get_site_message()): ?>

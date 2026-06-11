@@ -42,6 +42,9 @@
             <button type="submit">Apply</button>
         </form>
     </div>
+    <div class="delete-account">
+        <form action="/deactivate"></form>
+    </div>
     <?php endif; ?>
 </div>
 

@@ -152,6 +152,11 @@ div ul .folder_name {
     border-radius: 8px;
 }
 
+.password-save-settings {
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+}
+ 
 /* dark mode */
 .dark-mode {
     padding-bottom: 1rem;

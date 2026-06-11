@@ -21,8 +21,6 @@ if (! Validator::email($email)) {
     $errors['email'] = "Please provide a valid email address.";
 }
 
-
-
 if (! Validator::string($username, 4, 255)) {
     $errors['username'] = "Please provide a username between 4 and 255 characters.";
 }

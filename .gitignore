@@ -5,6 +5,7 @@
 node_modules/
 .DS_Store
 password_settings.json
+password_resets.json
 site_message.json
 composer.lock
 mail_errors.log

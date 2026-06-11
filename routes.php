@@ -10,7 +10,11 @@ $router->post('/login', 'login/store.php')->only('guest');
 $router->get('/login/2fa', 'login/twofactor.php')->only('guest');
 $router->post('/login/2fa', 'login/verify.php')->only('guest');
 $router->delete('/login', 'login/destroy.php')->only('auth');
-$router->get('/login/recover', 'login/recover.php')->only('guest');
+$router->get('/recover', 'recover/form.php')->only('guest');
+$router->post('/recover', 'recover/verify.php')->only('guest');
+// Password reset link (token)
+$router->get('/recover/reset', 'recover/reset.php')->only('guest');
+$router->post('/recover/reset', 'recover/reset_store.php')->only('guest');
 
 // Register page
 $router->get('/register', 'register/show.php')->only('guest');

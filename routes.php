@@ -31,6 +31,10 @@ if (isset($_SESSION['user'])) {
 $router->get('/settings', 'settings/index.php')->only($auth);
 $router->post('/set-setting', 'settings/set.php')->only('auth');
 
+//deactivate account
+$router->get('/deactivate', 'account/indexDelete.php')->only('auth');
+$router->post('/deactivate', 'account/verify.php')->only('auth');
+
 // Passwords page
 $router->get("/passwords", "passwords/index.php")->only('auth');
 $router->get("/passwords/create", "passwords/create.php")->only('auth');

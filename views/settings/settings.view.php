@@ -13,7 +13,7 @@
 
     <?php if($_SESSION['user'] ?? false) : ?>
     <div class="password-save-settings">
-        <h2>Password save settings</h2>
+        <h2 class="settings-h2">Password save settings</h2>
         <?php $pwSettings = $_SESSION['password_settings'] ?? []; ?>
         
         <form method="POST" action="/set-setting">
@@ -42,8 +42,11 @@
             <button type="submit">Apply</button>
         </form>
     </div>
-    <div class="delete-account">
-        <form action="/deactivate"></form>
+    <div class="deactivate-account">
+        <h2 class="settings-h2 deactivate">Deactivate account</h2>
+        <form action="/deactivate" method="GET">
+            <button class="deactivate-button" type="submit">Deactivate</button>
+        </form>
     </div>
     <?php endif; ?>
 </div>

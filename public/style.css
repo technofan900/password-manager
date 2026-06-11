@@ -157,6 +157,25 @@ div ul .folder_name {
     border-bottom: 1px solid #ddd;
 }
  
+.settings-h2 {
+    padding-top: 20px;
+}
+
+.deactivate {
+    text-align: center;
+}
+
+.deactivate-button {
+    --pico-background-color: #D93526;
+    --pico-border-color: #D93526;
+    --pico-color: white;
+}
+
+.deactivate-button:hover {
+  --pico-background-color: #b91c1c;
+  --pico-border-color: #b91c1c;
+}
+
 /* dark mode */
 .dark-mode {
     padding-bottom: 1rem;

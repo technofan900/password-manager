@@ -1,7 +1,14 @@
 <?php require base_path('views/partials/header.php'); ?>
 <?php require base_path('views/partials/nav.php'); ?>
+<?php $errors = \Core\Session::getFlash('errors') ?? []; ?>
 <div class="container">
   <h1>Welcome to Password Manager</h1>
+  <?php if(isset($errors['success'])) : ?>
+    <p class="text-success"><?= htmlspecialchars($errors['success']) ?></p>
+  <?php endif; ?>
+  <?php if(isset($errors['token'])) : ?>
+    <p class="text-red-400"><?= htmlspecialchars($errors['token']) ?></p>
+  <?php endif; ?>
   <p>
     Store, organize, and manage your passwords securely in one place.
     Our password manager helps you protect your accounts with strong security and easy access to your credentials.

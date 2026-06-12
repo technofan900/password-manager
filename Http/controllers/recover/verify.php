@@ -27,7 +27,7 @@ Session::flash('errors', []);
 
 if ($user) {
 	// generate token and persist to storage
-	$token = bin2hex(random_bytes(16));
+	$token = bin2hex(random_bytes(32));
 	$path = base_path('storage/password_resets.json');
 	$data = [];
 	if (file_exists($path)) {

@@ -35,6 +35,9 @@ $router->post('/set-setting', 'settings/set.php')->only('auth');
 $router->get('/deactivate', 'account/indexDelete.php')->only('auth');
 $router->post('/deactivate', 'account/verify.php')->only('auth');
 
+$router->get('/deactivate/complete', 'account/confirmDelete.php');
+$router->post('/deactivate/complete', 'account/Delete.php');
+
 // Passwords page
 $router->get("/passwords", "passwords/index.php")->only('auth');
 $router->get("/passwords/create", "passwords/create.php")->only('auth');

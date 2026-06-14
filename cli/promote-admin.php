@@ -11,6 +11,8 @@
  *   php cli/promote-admin.php 1
  *   php cli/promote-admin.php user@example.com
  *   php cli/promote-admin.php 1 --remove
+ * 
+ * Warning - login again to gain access to admin privileges.
  */
 
 // Prevent web access

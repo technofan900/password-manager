@@ -35,18 +35,6 @@ CREATE TABLE `folders` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `folders`
---
-
-INSERT INTO `folders` (`id`, `user_id`, `folder_name`, `created_at`) VALUES
-(1, 7, 'testing', '2026-03-06 15:14:20'),
-(2, 7, 'qwerty', '2026-03-11 14:24:10'),
-(4, 12, 'aszdxfgh', '2026-04-17 14:23:39'),
-(5, 12, 'awsdfgf', '2026-04-17 14:32:27');
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `login`
 --
 
@@ -55,24 +43,12 @@ CREATE TABLE `login` (
   `username` text NOT NULL,
   `email` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
+  `is_admin` tinyint(1) NOT NULL DEFAULT 0,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data for table `login`
---
-
-INSERT INTO `login` (`id`, `username`, `email`, `password`, `created_at`, `updated_at`) VALUES
-(1, 'test', '1@1', '$2y$10$nxIeSYvnT38DpnAZA4WvH.enmMX63314q7yJ87hebD4Gs/C5NTdIG', '2026-02-01 17:01:23', '2026-02-01 17:01:23'),
-(5, 'qwerty', 'qwer@ty.com', '$2y$10$hpNMAnNzePwwwbPeuy8LAO3ca4TyuSsTYbh6bLmF0jCJltyyFysma', '2026-03-03 18:56:17', '2026-03-03 18:56:17'),
-(7, '12qw', 'q@w.lv', '$2y$10$hM/iz.YeUGAITJCvYZlBIeEBmIwxEqqdqnqEmPi2Mry0wNMN7ZVNy', '2026-03-04 19:13:33', '2026-03-04 19:13:33'),
-(12, '13qw', '1@4.com', '$2y$10$T05Ge9gv/DqRsOQbHSLj2eDMmjJiu1s0yymSXfajfz6btvZmlkIoW', '2026-04-10 11:12:41', '2026-04-10 11:12:41'),
-(13, 'qwer', 'qw@er.lv', '$2y$10$1UGEi/z87sH.BjnscYdQj..X0MRfHReTi2EKEv2cMQoLkxN8OZITi', '2026-04-29 05:57:03', '2026-04-29 05:57:03');
-
--- --------------------------------------------------------
-
---
+--  
 -- Table structure for table `passwords`
 --
 
@@ -86,23 +62,6 @@ CREATE TABLE `passwords` (
   `attachment` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data for table `passwords`
---
-
-INSERT INTO `passwords` (`id`, `name`, `login_data`, `password`, `userID`, `folder_id`, `attachment`) VALUES
-(1, 'test', 'qwerty', '12345', 1, NULL, NULL),
-(2, 'dati', 'qwerty', '123456', 1, NULL, NULL),
-(3, 'weeds', 'qwerty1', '1234567', 1, NULL, NULL),
-(6, 'testds', 'dooods', 'qwerty1', 5, NULL, NULL),
-(7, 'pass1', '1123', '1234', 7, NULL, NULL),
-(8, 'pass2', '1234rt', '56789o', 7, 1, NULL),
-(9, 'pass3', 'qwedf', '12345t', 7, 1, NULL),
-(11, 'sazxdsa', 'axszx', 'xasz', 12, 5, NULL),
-(12, 'qwer', 'qwer', 'Yp2DpptslLIwfygl8m3vHnCw27UJuv3tY3AzpQ7WQ9E=', 13, NULL, 'image_1777442254.png'),
-(15, 'aasdfe', 'sdfagawe', 'Z2/l7gJjqqdocZ0Y5BSYy/Odr5nHfR8UumBe/e+4gGo=', 13, NULL, NULL);
-
---
 -- Indexes for dumped tables
 --
 
@@ -136,19 +95,19 @@ ALTER TABLE `passwords`
 -- AUTO_INCREMENT for table `folders`
 --
 ALTER TABLE `folders`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `login`
 --
 ALTER TABLE `login`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `passwords`
 --
 ALTER TABLE `passwords`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- Constraints for dumped tables

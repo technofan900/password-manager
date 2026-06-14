@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Classless CSS Mājaslapa</title>
 
-  <?php echo 'get '; print_r($_GET); echo'session '; print_r($_SESSION) ?>
+  <?php //echo 'get '; print_r($_GET); echo'session '; print_r($_SESSION) ?>
   <script>
   (function(){
       try {

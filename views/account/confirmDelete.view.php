@@ -3,7 +3,7 @@ require base_path("views/partials/header.php");
 ?>
 
 <div class="container">
-    <div class="deactivate">
+    <div class="deactivate-account">
         <h2>Last Chance!</h2>
         <?php if(isset($errors['token'])) : ?>
             <p class="text-red-400"><?= htmlspecialchars($errors['token']) ?></p>

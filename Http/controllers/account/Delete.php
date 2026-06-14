@@ -58,6 +58,17 @@ $db->query('DELETE FROM folders WHERE user_id = :user_id', [
     'user_id' => $userId
 ]);
 
+$passwordSettingsPath = base_path('storage/password_settings.json');
+if (file_exists($passwordSettingsPath)) {
+    $passwordSettingsJson = file_get_contents($passwordSettingsPath);
+    $passwordSettings = $passwordSettingsJson ? json_decode($passwordSettingsJson, true) : [];
+
+    if (is_array($passwordSettings) && isset($passwordSettings[(string) $userId])) {
+        unset($passwordSettings[(string) $userId]);
+        file_put_contents($passwordSettingsPath, json_encode($passwordSettings, JSON_PRETTY_PRINT), LOCK_EX);
+    }
+}
+
 $db->query('DELETE FROM login WHERE id = :id AND email = :email', [
     'id' => $userId,
     'email' => $email

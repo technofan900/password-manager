@@ -165,6 +165,11 @@ div ul .folder_name {
     text-align: center;
 }
 
+.deactivate-account {
+    text-align: center;
+    padding-top: 18%;
+}
+
 .deactivate-button {
     --pico-background-color: #D93526;
     --pico-border-color: #D93526;

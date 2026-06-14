@@ -34,6 +34,6 @@ $db->query($sql, [
     'folder_name' => $folder_name
 ]);
 
-$_SESSION['success'] = 'Folder created.';
+// $_SESSION['success'] = 'Folder created.';
 
 redirect('/passwords');

@@ -13,13 +13,11 @@ $errors = [];
 $name = $_POST['name'] ?? '';
 $login_data = $_POST['login_data'] ?? '';
 $password = $_POST['password'] ?? '';
-$folder = $_POST['folder_select'] ?? '';
+$folder = trim((string)($_POST['folder_select'] ?? ''));
 
 $pwRules = $_SESSION['password_settings'] ?? null;
 
-if ($folder === ' ') {
-    $folder = null; // Convert empty string to NULL
-}
+$folder = $folder === '' ? null : (int)$folder;
 
 // attachment will be set after validation if upload present
 $attachment = null;

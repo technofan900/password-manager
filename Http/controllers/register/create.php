@@ -52,8 +52,6 @@ $db->query('INSERT INTO login (username, email, password) VALUES (:username, :em
     'password' => password_hash($password, PASSWORD_BCRYPT)
 ]);
 
-$userID = $db->connection->lastInsertId();
-
 unset($_SESSION['old']);
 
 redirect('/pop_up');

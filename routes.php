@@ -47,7 +47,7 @@ $router->post('/passwords', 'passwords/store.php')->only('auth');
 $router->patch('/passwords', 'passwords/update.php')->only('auth');
 // Goes to popup that deletes note
 $router->get('/password/popup', 'passwords/popup.php')->only('auth');
-// Deletes note (form uses _method override)
+// Deletes password
 $router->delete('/passwords', 'passwords/destroy.php')->only('auth');
 $router->get("/password", "passwords/show.php")->only('auth');
 $router->get("/password/edit", "passwords/edit.php")->only('auth');

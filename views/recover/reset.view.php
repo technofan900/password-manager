@@ -11,7 +11,12 @@ require base_path("views/partials/nav.php");
     <form action="/recover/reset" method="POST">
         <input type="hidden" name="token" value="<?= htmlspecialchars($token) ?>">
         <label for="password">New password
-            <input type="password" name="password" id="password" required>
+            <?php if(isset($errors['password'])) : ?>
+                <input type="password" name="password" id="password" aria-invalid="true" aria-describedby="password-helper" required>
+                <small id="password-helper"><?= htmlspecialchars($errors['password']) ?></small>
+            <?php else : ?>
+                <input type="password" name="password" id="password" required>
+            <?php endif; ?>
         </label>
         <label for="password_confirm">Confirm password
             <input type="password" name="password_confirm" id="password_confirm" required>

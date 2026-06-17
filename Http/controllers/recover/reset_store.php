@@ -3,6 +3,7 @@
 use Core\App;
 use Core\Database;
 use Core\Session;
+use Core\Validator;
 
 $token = $_POST['token'] ?? '';
 $password = $_POST['password'] ?? '';
@@ -16,6 +17,14 @@ if ($password === '' || $password_confirm === '') {
 
 if ($password !== $password_confirm) {
     $errors['password'] = 'Passwords do not match.';
+}
+
+if ($password !== '' && $password_confirm !== '' && $password === $password_confirm) {
+    $passwordErrors = Validator::checkPasswordStrength($password);
+
+    if (! empty($passwordErrors)) {
+        $errors['password'] = implode(' ', $passwordErrors);
+    }
 }
 
 if (! empty($errors)) {

@@ -1,6 +1,7 @@
 .env
 /public/uploads/
 /storage/uploads/
+/storage/rate_limits/
 /vendor/
 node_modules/
 .DS_Store

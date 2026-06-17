@@ -31,6 +31,33 @@ $method = $_POST['_method'] ?? $_SERVER['REQUEST_METHOD'];
 
 require base_path('bootstrap.php');
 
+$config = require base_path('config.php');
+$rateLimit = $config['rate_limit'] ?? [];
+
+if (($rateLimit['enabled'] ?? true) === true) {
+    $routeKey = strtoupper($method) . ':' . $path;
+    $rule = $rateLimit['routes'][$routeKey] ?? $rateLimit;
+    $maxAttempts = (int) ($rule['max_attempts'] ?? 120);
+    $decaySeconds = (int) ($rule['decay_seconds'] ?? 60);
+    $clientIp = $_SERVER['REMOTE_ADDR'] ?? 'unknown';
+    $bucket = isset($rateLimit['routes'][$routeKey])
+        ? "{$clientIp}:{$routeKey}"
+        : "{$clientIp}:global";
+
+    $limiter = new \Core\RateLimiter(base_path('storage/rate_limits'));
+    $result = $limiter->attempt($bucket, $maxAttempts, $decaySeconds);
+
+    header('X-RateLimit-Limit: ' . $maxAttempts);
+    header('X-RateLimit-Remaining: ' . $result['remaining']);
+
+    if (! $result['allowed']) {
+        http_response_code(429);
+        header('Retry-After: ' . $result['retry_after']);
+        require base_path('views/429.php');
+        exit;
+    }
+}
+
 $router->route($path, $method);
 
 // unset($_SESSION['_flash']);

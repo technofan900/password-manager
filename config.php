@@ -20,4 +20,31 @@ return [
         'from' => getenv('MAIL_FROM') ?: 'no-reply@localhost',
         'subject' => getenv('MAIL_SUBJECT') ?: 'Your authentication code'
     ],
+    'rate_limit' => [
+        'enabled' => getenv('RATE_LIMIT_ENABLED') !== 'false',
+        'max_attempts' => intval(getenv('RATE_LIMIT_MAX_ATTEMPTS') ?: 120),
+        'decay_seconds' => intval(getenv('RATE_LIMIT_DECAY_SECONDS') ?: 60),
+        'routes' => [
+            'POST:/login' => [
+                'max_attempts' => 5,
+                'decay_seconds' => 60
+            ],
+            'POST:/login/2fa' => [
+                'max_attempts' => 5,
+                'decay_seconds' => 60
+            ],
+            'POST:/register' => [
+                'max_attempts' => 10,
+                'decay_seconds' => 300
+            ],
+            'POST:/recover' => [
+                'max_attempts' => 5,
+                'decay_seconds' => 300
+            ],
+            'POST:/recover/reset' => [
+                'max_attempts' => 5,
+                'decay_seconds' => 300
+            ]
+        ]
+    ],
 ];

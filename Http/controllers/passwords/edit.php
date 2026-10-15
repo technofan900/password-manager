@@ -7,6 +7,24 @@ $db = App::resolve(Database::class);
 
 $userId = $_SESSION['user']['id'];
 
+$pwSettings = $_SESSION['password_settings'] ?? [];
+$requirements = [];
+if (!empty($pwSettings['min_length'])) {
+    $requirements[] = "At least {$pwSettings['min_length']} characters";
+}
+if (!empty($pwSettings['require_uppercase'])) {
+    $requirements[] = 'At least one uppercase letter';
+}
+if (!empty($pwSettings['require_lowercase'])) {
+    $requirements[] = 'At least one lowercase letter';
+}
+if (!empty($pwSettings['require_numbers'])) {
+    $requirements[] = 'At least one number';
+}
+if (!empty($pwSettings['require_special'])) {
+    $requirements[] = 'At least one special character';
+}
+
 $sql = "SELECT * FROM passwords WHERE id = :id"; 
  $note = $db->query($sql, ['id' => $_GET['id']])->findOrFail();
 
@@ -25,5 +43,6 @@ authorize ($note['userID'] == $userId);
 view("passwords/editpassword.view.php", [
     'errors' => $_SESSION['errors'] ?? [],
     'note' => $note,
-    'folders' => $folders
+    'folders' => $folders,
+    'requirements' => $requirements
 ]);

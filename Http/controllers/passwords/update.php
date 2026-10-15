@@ -15,6 +15,7 @@ $name = $_POST['name'] ?? '';
 $login_data = $_POST['login_data'] ?? '';
 $password = $_POST['password'] ?? '';
 $folder_id = array_key_exists('folder_id', $_POST) ? $_POST['folder_id'] : null;
+$pwRules = $_SESSION['password_settings'] ?? null;
 
 $sql  = "SELECT * FROM passwords WHERE id = :id";
 $note = $db->query($sql, ['id' => $id])->findOrFail();
@@ -30,10 +31,17 @@ if (! Validator::string($name, $body_min_ln, $body_max_ln)) {
     $errors['name'] = "The name must be between {$body_min_ln} and {$body_max_ln} characters";
 }
 
+$passwordErrors = Validator::checkPasswordStrength($password, $pwRules);
+if (! empty($passwordErrors)) {
+    $errors['password'] = implode(' ', $passwordErrors);
+}
+
 if (! empty($errors)) {
     $_SESSION['errors'] = $errors;
     $_SESSION['old'] = [
-        'name' => $name
+        'name' => $name,
+        'login_data' => $login_data,
+        'password' => $password
     ];
 
     redirect("/password/edit?id={$id}");
